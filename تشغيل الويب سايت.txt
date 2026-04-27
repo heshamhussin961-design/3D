@@ -1,0 +1,30 @@
+أوامر تشغيل الويب سايت
+أول مرة (لو ما عندكش الـdependencies)
+
+cd C:\Users\hussi\OneDrive\Desktop\3D\innova-stars
+npm install --legacy-peer-deps
+التشغيل العادي (development)
+
+cd C:\Users\hussi\OneDrive\Desktop\3D\innova-stars
+npm run dev
+ثم افتح: http://localhost:3000 (لابتوب) أو http://192.168.1.235:3000 (موبايل على نفس WiFi)
+
+Production build + تشغيل
+
+cd C:\Users\hussi\OneDrive\Desktop\3D\innova-stars
+npm run build
+npm start
+فحوصات قبل ما تـcommit
+
+cd C:\Users\hussi\OneDrive\Desktop\3D\innova-stars
+npm run typecheck   # TypeScript
+npm run lint        # ESLint
+npm run format      # Prettier auto-fix
+npm run format:check # Prettier check only
+إيقاف السيرفر
+في الـterminal اللي شغّال فيه السيرفر، اضغط Ctrl+C.
+
+لو فيه instances زومبي على بورتات (3000, 3001…)، اقفلهم من PowerShell:
+
+
+Get-Process node -ErrorAction SilentlyContinue | Stop-Process -Force
