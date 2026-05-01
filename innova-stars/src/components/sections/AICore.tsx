@@ -6,7 +6,6 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useRef } from 'react';
 
 import { FloatingLabel } from '@/components/ui/FloatingLabel';
-import { FrameSequence } from '@/components/ui/FrameSequence';
 import { SectionNumber } from '@/components/ui/SectionNumber';
 
 if (typeof window !== 'undefined') {
@@ -21,12 +20,11 @@ const CAPABILITIES = [
 ];
 
 /**
- * AI Core — "The Intelligence Core".
+ * AI Core — text-and-HUD overlay over the global Innova.mp4 backdrop.
  *
- * Desktop: scroll-scrubbed neural-network frame sequence with four corner
- * callouts.
- * Mobile: static first frame + a 2-column grid of capability chips beneath
- * the visual (corner labels overlap on small viewports — this reads cleanly).
+ * No own video; this section adds a cyber-grid + bracket frame that frames
+ * the running backdrop so the same video reads as a "neural mission core"
+ * here, distinct from the cinematic hero treatment.
  */
 export function AICore(): JSX.Element {
   const sectionRef = useRef<HTMLElement | null>(null);
@@ -93,7 +91,7 @@ export function AICore(): JSX.Element {
       ref={sectionRef}
       id="ai-core"
       aria-label="AI capabilities"
-      className="relative bg-black"
+      className="relative"
     >
       <div
         ref={headerRef}
@@ -116,28 +114,60 @@ export function AICore(): JSX.Element {
         <p
           data-reveal
           className="mt-3 font-inter text-sm text-white/60 md:mt-4 md:text-lg"
+          style={{ textShadow: '0 0 20px rgba(0,0,0,0.7)' }}
         >
           Where data meets imagination, and insight becomes action
         </p>
       </div>
 
-      <div className="relative">
-        <FrameSequence
-          basePath="/frames/ai/"
-          frameCount={192}
-          framePrefix="frame_"
-          frameExtension="webp"
-          padLength={4}
-          triggerStart="top top"
-          triggerEnd="bottom top"
-          scrub={1}
-          pin
-          className="h-screen w-full"
-          mobileFallback="video-scrub"
-          mobileVideoSrc="/videos/neural-scrub.mp4"
+      <div className="relative h-screen overflow-hidden">
+        {/* Cyber grid overlay — masked radial so it reads as a HUD frame */}
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-0 z-10 opacity-[0.18]"
+          style={{
+            backgroundImage:
+              'linear-gradient(rgba(212,175,55,0.4) 1px, transparent 1px), linear-gradient(90deg, rgba(212,175,55,0.4) 1px, transparent 1px)',
+            backgroundSize: '60px 60px',
+            maskImage:
+              'radial-gradient(ellipse at center, black 30%, transparent 75%)',
+            WebkitMaskImage:
+              'radial-gradient(ellipse at center, black 30%, transparent 75%)',
+          }}
         />
 
-        {/* Desktop floating corner labels (hidden on mobile to avoid overlap). */}
+        {/* Inner soft vignette so labels stay readable */}
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-0 z-10"
+          style={{
+            background:
+              'radial-gradient(circle at center, rgba(212,175,55,0.18) 0%, transparent 45%), radial-gradient(ellipse at center, transparent 35%, rgba(0,0,0,0.55) 100%)',
+          }}
+        />
+
+        {/* HUD bracket corners */}
+        <HudBracket className="left-6 top-6 md:left-10 md:top-10" pos="tl" />
+        <HudBracket className="right-6 top-6 md:right-10 md:top-10" pos="tr" />
+        <HudBracket
+          className="left-6 bottom-6 md:left-10 md:bottom-10"
+          pos="bl"
+        />
+        <HudBracket
+          className="right-6 bottom-6 md:right-10 md:bottom-10"
+          pos="br"
+        />
+
+        {/* Live data ticker */}
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute bottom-6 left-1/2 z-20 -translate-x-1/2 font-mono text-[10px] uppercase tracking-[0.25em] text-gold/70 md:bottom-10 md:text-xs"
+        >
+          <span className="mr-3 inline-block h-2 w-2 animate-pulse rounded-full bg-gold align-middle shadow-[0_0_10px_rgba(212,175,55,0.9)]" />
+          NEURAL · 0x7F · STREAMING
+        </div>
+
+        {/* Desktop floating corner labels */}
         <div className="hidden md:block">
           <FloatingLabel corner="top-left">Predictive Analytics</FloatingLabel>
           <FloatingLabel corner="top-right">AI Content Generation</FloatingLabel>
@@ -146,7 +176,7 @@ export function AICore(): JSX.Element {
         </div>
       </div>
 
-      {/* Mobile capability grid — stacked under the visual. */}
+      {/* Mobile capability grid */}
       <div className="px-6 pb-16 pt-10 md:hidden">
         <div className="grid grid-cols-2 gap-3">
           {CAPABILITIES.map((cap) => (
@@ -167,6 +197,28 @@ export function AICore(): JSX.Element {
         </div>
       </div>
     </section>
+  );
+}
+
+function HudBracket({
+  className,
+  pos,
+}: {
+  className: string;
+  pos: 'tl' | 'tr' | 'bl' | 'br';
+}): JSX.Element {
+  const lines: Record<typeof pos, string> = {
+    tl: 'border-t-2 border-l-2',
+    tr: 'border-t-2 border-r-2',
+    bl: 'border-b-2 border-l-2',
+    br: 'border-b-2 border-r-2',
+  };
+  return (
+    <span
+      aria-hidden="true"
+      className={`pointer-events-none absolute z-20 h-10 w-10 border-gold/80 ${lines[pos]} ${className}`}
+      style={{ boxShadow: '0 0 20px rgba(212,175,55,0.25)' }}
+    />
   );
 }
 

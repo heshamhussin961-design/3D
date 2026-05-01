@@ -19,6 +19,8 @@ interface FormValues {
   company: string;
   budget: string;
   message: string;
+  /** Honeypot — kept blank for humans, bots fill it. */
+  website: string;
 }
 
 interface FieldErrors {
@@ -34,6 +36,7 @@ const INITIAL: FormValues = {
   company: '',
   budget: '',
   message: '',
+  website: '',
 };
 
 const BUDGET_OPTIONS = [
@@ -247,6 +250,26 @@ export function ContactModal({
                   noValidate
                   className="mt-8 flex flex-col gap-6"
                 >
+                  {/* Honeypot — hidden from users, bots fill it and get
+                      silently dropped on the server. */}
+                  <div
+                    aria-hidden="true"
+                    className="pointer-events-none absolute left-[-9999px] top-[-9999px] h-0 w-0 overflow-hidden opacity-0"
+                  >
+                    <label htmlFor="website-hp">
+                      Leave this field empty
+                      <input
+                        id="website-hp"
+                        type="text"
+                        name="website"
+                        tabIndex={-1}
+                        autoComplete="off"
+                        value={values.website}
+                        onChange={(e) => update('website', e.target.value)}
+                      />
+                    </label>
+                  </div>
+
                   <Input
                     ref={firstFieldRef}
                     name="name"

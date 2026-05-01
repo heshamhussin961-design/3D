@@ -13,16 +13,16 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 1,
     },
     {
-      url: `${SITE_CONFIG.url}/work`,
+      url: `${SITE_CONFIG.url}/about`,
       lastModified: now,
       changeFrequency: 'monthly',
       priority: 0.9,
     },
     {
-      url: `${SITE_CONFIG.url}/about`,
+      url: `${SITE_CONFIG.url}/careers`,
       lastModified: now,
-      changeFrequency: 'monthly',
-      priority: 0.9,
+      changeFrequency: 'weekly',
+      priority: 0.7,
     },
     ...SERVICES.map((s) => ({
       url: `${SITE_CONFIG.url}/services/${s.id}`,
@@ -30,5 +30,23 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'monthly' as const,
       priority: 0.8,
     })),
+    {
+      url: `${SITE_CONFIG.url}/privacy`,
+      lastModified: now,
+      changeFrequency: 'yearly',
+      priority: 0.3,
+    },
+    {
+      url: `${SITE_CONFIG.url}/terms`,
+      lastModified: now,
+      changeFrequency: 'yearly',
+      priority: 0.3,
+    },
+    {
+      url: `${SITE_CONFIG.url}/cookies`,
+      lastModified: now,
+      changeFrequency: 'yearly',
+      priority: 0.3,
+    },
   ];
 }

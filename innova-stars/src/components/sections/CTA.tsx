@@ -8,8 +8,6 @@ import dynamic from 'next/dynamic';
 import { useRef, useState } from 'react';
 
 import { MagneticButton } from '@/components/ui/MagneticButton';
-import { OrbitalRings } from '@/components/ui/OrbitalRings';
-import { Planet } from '@/components/ui/Planet';
 import { SectionNumber } from '@/components/ui/SectionNumber';
 
 if (typeof window !== 'undefined') {
@@ -36,7 +34,6 @@ function splitLetters(text: string): { char: string; key: string }[] {
 export function CTA(): JSX.Element {
   const sectionRef = useRef<HTMLElement | null>(null);
   const headlineRef = useRef<HTMLHeadingElement | null>(null);
-  const planetRef = useRef<HTMLDivElement | null>(null);
   const contentRef = useRef<HTMLDivElement | null>(null);
   const [modalOpen, setModalOpen] = useState<boolean>(false);
 
@@ -82,25 +79,6 @@ export function CTA(): JSX.Element {
         '-=0.3',
       );
 
-      // Planet scrubs slightly upward + scales as section scrolls through.
-      const planet = planetRef.current;
-      if (planet) {
-        gsap.fromTo(
-          planet,
-          { y: 100, scale: 0.85 },
-          {
-            y: 0,
-            scale: 1,
-            ease: 'none',
-            scrollTrigger: {
-              trigger: section,
-              start: 'top bottom',
-              end: 'bottom top',
-              scrub: 1,
-            },
-          },
-        );
-      }
     },
     { scope: sectionRef },
   );
@@ -112,15 +90,15 @@ export function CTA(): JSX.Element {
       ref={sectionRef}
       id="contact"
       aria-label="Start your project"
-      className="relative min-h-screen w-full overflow-hidden bg-deep-space"
+      className="relative min-h-screen w-full overflow-hidden"
       style={{
         backgroundImage:
-          'radial-gradient(ellipse at center 80%, rgba(212,175,55,0.18) 0%, rgba(10,10,26,1) 55%, #000 100%)',
+          'radial-gradient(ellipse at center 80%, rgba(212,175,55,0.18) 0%, rgba(0,0,0,0.45) 55%, rgba(0,0,0,0.7) 100%)',
       }}
     >
       <div
         ref={contentRef}
-        className="relative z-10 mx-auto flex min-h-screen max-w-4xl flex-col items-center justify-center px-6 pb-[40vh] pt-24 text-center md:pt-32"
+        className="relative z-10 mx-auto flex min-h-screen max-w-4xl flex-col items-center justify-center px-6 py-24 text-center md:py-32"
       >
         <div data-reveal className="flex items-center justify-center gap-3">
           <SectionNumber number="05" />
@@ -173,18 +151,6 @@ export function CTA(): JSX.Element {
         >
           Or scroll to explore more
         </p>
-      </div>
-
-      {/* Planet + orbital rings anchored to bottom-center of section. */}
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute bottom-[-25%] left-1/2 z-0 w-[200px] -translate-x-1/2 md:w-[300px] lg:w-[500px]"
-        style={{ perspective: '1200px' }}
-      >
-        <div ref={planetRef} className="relative">
-          <OrbitalRings />
-          <Planet className="relative z-10 w-full" />
-        </div>
       </div>
 
       <ContactModal open={modalOpen} onClose={() => setModalOpen(false)} />

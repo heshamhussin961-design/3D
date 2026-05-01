@@ -10,8 +10,7 @@ import { SERVICES } from '@/lib/constants/services';
 
 const COMPANY_LINKS: { label: string; href: string }[] = [
   { label: 'About Us', href: '/about' },
-  { label: 'Our Work', href: '/work' },
-  { label: 'Careers', href: '/about#careers' },
+  { label: 'Careers', href: '/careers' },
   { label: 'Contact', href: '/#contact' },
 ];
 
@@ -22,7 +21,7 @@ const COMPANY_LINKS: { label: string; href: string }[] = [
 export function Footer(): JSX.Element {
   const year = new Date().getFullYear();
   return (
-    <footer className="relative border-t border-gold/10 bg-black px-6 pb-8 pt-24 md:px-10">
+    <footer className="relative border-t border-gold/10 bg-black/40 px-6 pb-8 pt-24 backdrop-blur-md md:px-10">
       <div
         aria-hidden="true"
         className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-gold/40 to-transparent"
@@ -48,7 +47,7 @@ export function Footer(): JSX.Element {
             Services
           </h3>
           <ul className="flex flex-col gap-3">
-            {SERVICES.map((s) => (
+            {SERVICES.filter((s) => !s.isHub).map((s) => (
               <li key={s.id}>
                 <a
                   href={`/services/${s.id}`}
@@ -119,22 +118,19 @@ export function Footer(): JSX.Element {
           </p>
           <div className="flex items-center gap-4 font-inter text-xs text-white/40">
             <span className="hidden md:inline">Crafted in UAE</span>
-            <a
-              href="#privacy"
-              className="transition-colors hover:text-gold"
-            >
+            <a href="/privacy" className="transition-colors hover:text-gold">
               Privacy
             </a>
             <span aria-hidden="true" className="text-white/20">
               |
             </span>
-            <a href="#terms" className="transition-colors hover:text-gold">
+            <a href="/terms" className="transition-colors hover:text-gold">
               Terms
             </a>
             <span aria-hidden="true" className="text-white/20">
               |
             </span>
-            <a href="#cookies" className="transition-colors hover:text-gold">
+            <a href="/cookies" className="transition-colors hover:text-gold">
               Cookies
             </a>
           </div>

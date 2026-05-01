@@ -1,5 +1,39 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
-  <rect width="32" height="32" rx="6" fill="#0A0A1A"/>
-  <path d="M16 4 L18.6 13.4 L28 16 L18.6 18.6 L16 28 L13.4 18.6 L4 16 L13.4 13.4 Z" fill="#D4AF37"/>
-  <circle cx="16" cy="16" r="2" fill="#F0D060"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#F5D26B"/>
+      <stop offset="100%" stop-color="#A8841C"/>
+    </linearGradient>
+    <radialGradient id="p" cx="0.4" cy="0.35" r="0.7">
+      <stop offset="0%" stop-color="#F5D26B"/>
+      <stop offset="100%" stop-color="#7A5E12"/>
+    </radialGradient>
+  </defs>
+
+  <rect width="64" height="64" rx="12" fill="#1F1430"/>
+
+  <!-- Saturn-style planet, centered -->
+  <g transform="translate(32 36)">
+    <ellipse cx="0" cy="3" rx="24" ry="6.5" fill="none" stroke="url(#g)" stroke-width="3"/>
+    <circle cx="0" cy="0" r="14" fill="url(#p)"/>
+    <path d="M-10 -3 Q 0 -8 10 -3" stroke="#7A5E12" stroke-width="1.6" fill="none" opacity="0.7"/>
+    <path d="M-9 4 Q 0 8 9 3" stroke="#7A5E12" stroke-width="1.4" fill="none" opacity="0.55"/>
+  </g>
+
+  <!-- Rocket above -->
+  <g transform="translate(28 4)">
+    <path d="M4 0 C 7 3 9 8 9 13 L 9 20 L -1 20 L -1 13 C -1 8 1 3 4 0 Z" fill="url(#g)"/>
+    <circle cx="4" cy="9" r="2" fill="#1F1430"/>
+    <path d="M-1 17 L -5 22 L -1 22 Z" fill="url(#g)"/>
+    <path d="M9 17 L 13 22 L 9 22 Z" fill="url(#g)"/>
+    <path d="M2 22 L 4 26 L 6 22 Z" fill="#FFB347"/>
+  </g>
+
+  <!-- Sparkle stars at corners -->
+  <g fill="url(#g)">
+    <path d="M9 20 L11 24 L15 26 L11 28 L9 32 L7 28 L3 26 L7 24 Z" opacity="0.9"/>
+    <path d="M54 14 L55.5 17 L58.5 18.5 L55.5 20 L54 23 L52.5 20 L49.5 18.5 L52.5 17 Z" opacity="0.8"/>
+    <circle cx="55" cy="42" r="1.5" opacity="0.7"/>
+    <circle cx="9" cy="48" r="1.5" opacity="0.7"/>
+  </g>
 </svg>

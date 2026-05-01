@@ -13,7 +13,8 @@ interface RouteParams {
 }
 
 export function generateStaticParams(): { slug: string }[] {
-  return SERVICES.map((s) => ({ slug: s.id }));
+  // Exclude the hub — it isn't a real service page.
+  return SERVICES.filter((s) => !s.isHub).map((s) => ({ slug: s.id }));
 }
 
 export function generateMetadata({ params }: RouteParams): Metadata {
@@ -41,13 +42,15 @@ export function generateMetadata({ params }: RouteParams): Metadata {
 
 export default function ServicePage({ params }: RouteParams): JSX.Element {
   const service = SERVICES_BY_ID[params.slug];
-  if (!service) notFound();
+  if (!service || service.isHub) notFound();
 
   // Pull the ids of services this one connects to in the constellation —
-  // perfect "related services" without duplicating logic.
+  // perfect "related services" without duplicating logic. Skip the hub.
   const related = service.connections
     .map((id) => SERVICES_BY_ID[id])
-    .filter((s): s is (typeof SERVICES)[number] => Boolean(s));
+    .filter(
+      (s): s is (typeof SERVICES)[number] => Boolean(s) && !s.isHub,
+    );
 
   // JSON-LD: structured data for the Service entity.
   const jsonLd = {

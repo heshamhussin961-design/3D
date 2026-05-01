@@ -1,3 +1,5 @@
+import { Analytics } from '@vercel/analytics/react';
+import { SpeedInsights } from '@vercel/speed-insights/next';
 import type { Metadata, Viewport } from 'next';
 import { Inter, Orbitron } from 'next/font/google';
 import { Suspense, type ReactNode } from 'react';
@@ -5,9 +7,12 @@ import { Suspense, type ReactNode } from 'react';
 import { LenisProvider } from '@/components/providers/LenisProvider';
 import { StructuredData } from '@/components/providers/StructuredData';
 import { BackToTop } from '@/components/ui/BackToTop';
+import { CookieBanner } from '@/components/ui/CookieBanner';
 import { Footer } from '@/components/ui/Footer';
 import { Navigation } from '@/components/ui/Navigation';
 import { ScrollProgress } from '@/components/ui/ScrollProgress';
+import { VideoBackdrop } from '@/components/ui/VideoBackdrop';
+import { WhatsAppFab } from '@/components/ui/WhatsAppFab';
 import { SITE_CONFIG } from '@/lib/constants';
 import './globals.css';
 
@@ -60,9 +65,12 @@ export const metadata: Metadata = {
     description: SITE_CONFIG.description,
   },
   icons: {
-    // Modern browsers prefer the SVG; iOS Safari falls back to the favicon
-    // route convention if you add `app/icon.png` later.
-    icon: [{ url: '/favicon.svg', type: 'image/svg+xml' }],
+    icon: [
+      { url: '/favicon.svg', type: 'image/svg+xml' },
+      { url: '/innova-logo.svg', type: 'image/svg+xml', sizes: 'any' },
+    ],
+    shortcut: '/favicon.svg',
+    apple: '/favicon.svg',
   },
 };
 
@@ -79,14 +87,8 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${orbitron.variable} ${inter.variable}`}>
       <head>
-        {/* Preload critical first frames of each scroll-scrubbed sequence so
-            the experience starts immediately while the loader streams the rest. */}
-        <link
-          rel="preload"
-          as="image"
-          href="/frames/ai/frame_0001.webp"
-          type="image/webp"
-        />
+        {/* Poster for the Services backdrop — keeps the section legible while
+            the looping Innova video streams in. */}
         <link
           rel="preload"
           as="image"
@@ -94,7 +96,7 @@ export default function RootLayout({
           type="image/webp"
         />
       </head>
-      <body className="bg-deep-space text-white antialiased">
+      <body className="bg-black text-white antialiased">
         <a
           href="#home"
           className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[200] focus:bg-gold focus:px-4 focus:py-2 focus:font-orbitron focus:text-sm focus:text-black"
@@ -102,15 +104,22 @@ export default function RootLayout({
           Skip to main content
         </a>
         <StructuredData />
+        <VideoBackdrop src="/videos/innova-scrub.mp4" />
         <Suspense fallback={null}>
           <LenisProvider>
             <ScrollProgress />
             <Navigation />
-            {children}
-            <Footer />
+            <div className="relative z-10">
+              {children}
+              <Footer />
+            </div>
             <BackToTop />
+            <WhatsAppFab />
+            <CookieBanner />
           </LenisProvider>
         </Suspense>
+        <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );

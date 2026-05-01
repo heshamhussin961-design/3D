@@ -60,8 +60,17 @@ export function Stats(): JSX.Element {
       ref={sectionRef}
       id="stats"
       aria-label="Our results by the numbers"
-      className="stats-bg relative overflow-hidden px-6 py-20 md:px-10 md:py-32"
+      className="relative overflow-hidden px-6 py-20 md:px-10 md:py-32"
     >
+      {/* Readability scrim over the global video backdrop */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 -z-10"
+        style={{
+          background:
+            'radial-gradient(ellipse at center, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.8) 100%)',
+        }}
+      />
       <ParticleField count={30} />
 
       <div ref={headerRef} className="relative z-10 mx-auto max-w-2xl text-center">

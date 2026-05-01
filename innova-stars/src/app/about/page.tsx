@@ -48,30 +48,51 @@ const VALUES = [
   },
 ];
 
-const TEAM = [
+interface TeamMember {
+  /** Slug-style id, also used as photo filename in /public/team/. */
+  id: string;
+  initials: string;
+  name: string;
+  role: string;
+  bio: string;
+  /** Optional photo path. If unset, the initials block is shown. */
+  photo?: string;
+}
+
+// To attach a real photo, save the file as /public/team/<id>.jpg and add
+// `photo: '/team/<id>.jpg'` to the corresponding entry below.
+const TEAM: TeamMember[] = [
   {
-    initials: 'MH',
-    name: 'Marwan H.',
+    id: 'founder',
+    initials: 'IS',
+    name: 'Founder',
     role: 'Founder · Strategy',
-    bio: 'Brand & product strategy. Previously led growth at a regional fintech and a Series B SaaS.',
+    bio: 'Brand & product strategy. Building Innova Stars from Abu Dhabi.',
+    // photo: '/team/founder.jpg',
   },
   {
-    initials: 'NA',
-    name: 'Nora A.',
-    role: 'Creative Director',
-    bio: 'Identity systems, art direction, and editorial. Believes good typography is half the brief.',
+    id: 'creative',
+    initials: 'CD',
+    name: 'Creative Director',
+    role: 'Creative · Identity',
+    bio: 'Identity systems, art direction, and editorial design.',
+    // photo: '/team/creative.jpg',
   },
   {
-    initials: 'YK',
-    name: 'Yusuf K.',
-    role: 'Head of AI',
-    bio: 'Applied ML, recommendation systems, and AI product features. Ex–research at a top European lab.',
+    id: 'ai',
+    initials: 'AI',
+    name: 'Head of AI',
+    role: 'AI · Engineering',
+    bio: 'Applied ML, automation, and AI product features.',
+    // photo: '/team/ai.jpg',
   },
   {
-    initials: 'LR',
-    name: 'Lina R.',
-    role: 'Head of Growth',
-    bio: 'Performance, SEO, and analytics. Treats spreadsheets as an artistic medium.',
+    id: 'growth',
+    initials: 'GR',
+    name: 'Head of Growth',
+    role: 'Growth · Analytics',
+    bio: 'Performance marketing, SEO, and conversion analytics.',
+    // photo: '/team/growth.jpg',
   },
 ];
 
@@ -157,12 +178,22 @@ export default function AboutPage(): JSX.Element {
         <div className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {TEAM.map((m) => (
             <div
-              key={m.name}
+              key={m.id}
               className="flex flex-col gap-4 border border-white/10 bg-black/30 p-6 transition-colors duration-300 hover:border-gold/30"
             >
-              <div className="flex h-14 w-14 items-center justify-center bg-gold font-orbitron text-base font-bold tracking-[0.05em] text-black">
-                {m.initials}
-              </div>
+              {m.photo ? (
+                // eslint-disable-next-line @next/next/no-img-element
+                <img
+                  src={m.photo}
+                  alt={`${m.name} — ${m.role}`}
+                  className="h-20 w-20 object-cover ring-1 ring-gold/40"
+                  loading="lazy"
+                />
+              ) : (
+                <div className="flex h-14 w-14 items-center justify-center bg-gold font-orbitron text-base font-bold tracking-[0.05em] text-black">
+                  {m.initials}
+                </div>
+              )}
               <div>
                 <p className="font-orbitron text-base font-semibold text-white">
                   {m.name}
@@ -179,7 +210,7 @@ export default function AboutPage(): JSX.Element {
         </div>
       </section>
 
-      {/* Careers anchor */}
+      {/* Careers anchor — full page lives at /careers */}
       <section
         id="careers"
         className="mx-auto mt-32 max-w-3xl border-t border-gold/15 px-6 pt-16 text-center md:px-10"
@@ -191,15 +222,15 @@ export default function AboutPage(): JSX.Element {
           We hire rarely. When we do, we hire well.
         </h2>
         <p className="mt-4 font-inter text-base text-white/60">
-          No open roles right now. Senior strategists, designers, and ML
-          engineers in the GCC region are always welcome to send their work.
+          Senior strategists, designers, and ML engineers in the GCC region
+          are always welcome to send their work.
         </p>
-        <a
-          href={`mailto:${SITE_CONFIG.email}?subject=Hello`}
+        <Link
+          href="/careers"
           className="mt-6 inline-block font-orbitron text-sm font-medium uppercase tracking-[0.2em] text-gold transition-colors hover:text-gold-light"
         >
-          {SITE_CONFIG.email}
-        </a>
+          See open roles →
+        </Link>
       </section>
 
       {/* CTA */}

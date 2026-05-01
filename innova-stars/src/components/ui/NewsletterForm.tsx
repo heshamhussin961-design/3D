@@ -15,6 +15,7 @@ interface NewsletterFormProps {
  */
 export function NewsletterForm({ className }: NewsletterFormProps): JSX.Element {
   const [email, setEmail] = useState('');
+  const [website, setWebsite] = useState(''); // honeypot
   const [status, setStatus] = useState<'idle' | 'submitting' | 'ok' | 'error'>(
     'idle',
   );
@@ -28,7 +29,7 @@ export function NewsletterForm({ className }: NewsletterFormProps): JSX.Element 
       const res = await fetch('/api/newsletter', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email }),
+        body: JSON.stringify({ email, website }),
       });
       const data = (await res.json().catch(() => ({}))) as {
         ok?: boolean;
@@ -67,6 +68,25 @@ export function NewsletterForm({ className }: NewsletterFormProps): JSX.Element 
       className={cn('flex flex-col gap-2', className)}
       aria-label="Subscribe to newsletter"
     >
+      {/* Honeypot for bots */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute left-[-9999px] top-[-9999px] h-0 w-0 overflow-hidden opacity-0"
+      >
+        <label htmlFor="nl-website-hp">
+          Leave empty
+          <input
+            id="nl-website-hp"
+            type="text"
+            name="website"
+            tabIndex={-1}
+            autoComplete="off"
+            value={website}
+            onChange={(e) => setWebsite(e.target.value)}
+          />
+        </label>
+      </div>
+
       <div className="flex w-full max-w-sm items-stretch border border-gold/20 bg-black/40 transition-colors duration-200 focus-within:border-gold/60">
         <input
           type="email"

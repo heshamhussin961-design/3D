@@ -6,17 +6,19 @@ export const SITE_CONFIG = {
   tagline: 'Lead you to the stars',
   description:
     'A cosmic marketing agency crafting stellar experiences through AI-powered solutions and creative excellence.',
-  url: 'https://innovastars.ae',
+  url: 'https://innova-stars.ae',
   ogImage: '/og-image.jpg',
-  email: 'hello@innovastars.ae',
-  phone: '+971 XX XXX XXXX',
+  email: 'info@innova-stars.ae',
+  phone: '+971 54 318 0337',
+  whatsapp: 'https://wa.me/971543180337',
   address: 'Abu Dhabi, UAE',
   social: {
-    instagram: 'https://instagram.com/innovastars',
-    linkedin: 'https://linkedin.com/company/innovastars',
-    tiktok: 'https://tiktok.com/@innovastars',
-    twitter: 'https://twitter.com/innovastars',
-    youtube: 'https://youtube.com/@innovastars',
+    whatsapp: 'https://wa.me/971543180337',
+    instagram: 'https://www.instagram.com/innovastars/',
+    linkedin:
+      'https://www.linkedin.com/company/innova-stars-for-marketing-technology/',
+    tiktok: 'https://www.tiktok.com/@innova.stars.tech',
+    facebook: 'https://www.facebook.com/share/1DmhuFKqna/',
   },
 } as const;
 
@@ -28,8 +30,8 @@ export interface ServiceSummary {
 }
 
 /**
- * The seven core services. The full constellation data with positions
- * and connections lives in `src/lib/constants/services.ts`.
+ * The core services for grid/list views. Full constellation data with
+ * positions and connections lives in `src/lib/constants/services.ts`.
  */
 export const SERVICES: ServiceSummary[] = [
   {
@@ -63,10 +65,22 @@ export const SERVICES: ServiceSummary[] = [
     icon: 'TrendingUp',
   },
   {
-    id: 'apps',
-    name: 'Smart App Solutions',
-    shortDesc: 'Custom applications with AI integration',
+    id: 'web-dev',
+    name: 'Web Development',
+    shortDesc: 'High-performance sites and web apps',
+    icon: 'Globe',
+  },
+  {
+    id: 'mobile-dev',
+    name: 'Mobile App Development',
+    shortDesc: 'Native and cross-platform apps with AI built in',
     icon: 'Smartphone',
+  },
+  {
+    id: 'ecommerce',
+    name: 'E-commerce Growth',
+    shortDesc: 'Stores that ship, scale, and convert',
+    icon: 'ShoppingCart',
   },
   {
     id: 'brand',
@@ -85,28 +99,28 @@ export interface Stat {
 
 export const STATS: Stat[] = [
   {
-    value: 500,
-    suffix: '+',
-    label: 'Campaigns Launched',
-    description: 'Across industries and continents',
+    value: 4,
+    suffix: '',
+    label: 'Years of Experience',
+    description: 'Building brands across the GCC',
   },
   {
-    value: 98,
+    value: 70,
+    suffix: '+',
+    label: 'Happy Clients',
+    description: 'From startups to enterprises',
+  },
+  {
+    value: 99,
     suffix: '%',
     label: 'Client Satisfaction',
     description: 'Measured quarterly',
   },
   {
-    value: 12,
-    suffix: 'x',
-    label: 'Average ROI',
-    description: 'For our retained clients',
-  },
-  {
     value: 50,
     suffix: '+',
-    label: 'Brands Transformed',
-    description: 'From startups to enterprises',
+    label: 'Completed Projects',
+    description: 'Shipped end-to-end',
   },
 ];
 
@@ -118,7 +132,7 @@ export interface NavLink {
 export const NAV_LINKS: NavLink[] = [
   { label: 'Home', href: '/' },
   { label: 'Services', href: '/#services' },
-  { label: 'Our Work', href: '/work' },
   { label: 'About', href: '/about' },
+  { label: 'Careers', href: '/careers' },
   { label: 'Contact', href: '/#contact' },
 ];

@@ -114,7 +114,7 @@ export function Navigation(): JSX.Element {
         className={cn(
           'fixed left-0 right-0 top-0 z-50 transition-all duration-300',
           scrolled
-            ? 'border-b border-gold/10 bg-deep-space/80 py-3 backdrop-blur-xl md:py-4'
+            ? 'border-b border-gold/10 bg-black/20 py-3 backdrop-blur-md md:py-4'
             : 'bg-transparent py-4 md:py-6',
         )}
       >

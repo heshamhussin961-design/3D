@@ -25,7 +25,8 @@ const OLD_MARKETING_MOBILE = [
   'Mass Email',
 ];
 
-const HEADLINE = 'Traditional marketing is dead.';
+const HEADLINE_LINE_1 = 'Traditional marketing';
+const HEADLINE_LINE_2 = 'is dead.';
 const RISING = 'It’s time to rise above.';
 
 interface BadgePosition {
@@ -129,13 +130,6 @@ export function Problem(): JSX.Element {
         0,
       );
 
-      // Background darkens from deep-space toward pure black.
-      tl.to(
-        sectionRef.current,
-        { backgroundColor: '#000000', duration: 1 },
-        0,
-      );
-
       // Phase 2 (0.2 → 0.7): badges fall one after another.
       const badges = Array.from(
         sectionRef.current?.querySelectorAll<HTMLDivElement>(
@@ -191,14 +185,15 @@ export function Problem(): JSX.Element {
     { scope: sectionRef, dependencies: [words.length] },
   );
 
-  const headlineChars = splitLetters(HEADLINE);
+  const headlineLine1 = splitLetters(HEADLINE_LINE_1);
+  const headlineLine2 = splitLetters(HEADLINE_LINE_2);
   const risingChars = splitLetters(RISING);
 
   return (
     <section
       ref={sectionRef}
       aria-label="Why traditional marketing no longer works"
-      className="relative h-screen w-full overflow-hidden bg-deep-space"
+      className="relative h-screen w-full overflow-hidden"
     >
       {/* Gold light rays */}
       <svg
@@ -227,17 +222,30 @@ export function Problem(): JSX.Element {
       <div className="relative z-10 flex h-full items-center justify-center px-6">
         <h2
           ref={headlineRef}
-          className="max-w-5xl text-center font-orbitron text-[40px] font-bold leading-tight text-white md:text-[80px]"
+          className="max-w-5xl text-center font-orbitron text-[40px] font-bold leading-[1.05] text-white md:text-[80px]"
         >
-          {headlineChars.map((letter) => (
-            <span
-              key={letter.key}
-              data-letter
-              className="inline-block whitespace-pre"
-            >
-              {letter.char}
-            </span>
-          ))}
+          <span className="block">
+            {headlineLine1.map((letter) => (
+              <span
+                key={letter.key}
+                data-letter
+                className="inline-block whitespace-pre"
+              >
+                {letter.char}
+              </span>
+            ))}
+          </span>
+          <span className="mt-2 block md:mt-4">
+            {headlineLine2.map((letter) => (
+              <span
+                key={letter.key}
+                data-letter
+                className="inline-block whitespace-pre"
+              >
+                {letter.char}
+              </span>
+            ))}
+          </span>
         </h2>
 
         <h2

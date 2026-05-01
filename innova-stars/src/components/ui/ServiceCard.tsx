@@ -2,9 +2,13 @@
 
 import {
   Brain,
+  Code,
+  Globe,
   Share2,
+  ShoppingCart,
   Smartphone,
   Sparkles,
+  Star,
   TrendingUp,
   Users,
   Video,
@@ -23,6 +27,10 @@ const ICON_MAP: Record<ServiceIcon, LucideIcon> = {
   TrendingUp,
   Smartphone,
   Sparkles,
+  Code,
+  ShoppingCart,
+  Globe,
+  Star,
 };
 
 interface ServiceCardProps {

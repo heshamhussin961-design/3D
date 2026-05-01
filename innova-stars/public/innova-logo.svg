@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 420" fill="none">
+  <defs>
+    <linearGradient id="goldGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#F5D26B"/>
+      <stop offset="55%" stop-color="#D4AF37"/>
+      <stop offset="100%" stop-color="#A8841C"/>
+    </linearGradient>
+    <radialGradient id="planetGrad" cx="0.4" cy="0.35" r="0.7">
+      <stop offset="0%" stop-color="#F5D26B"/>
+      <stop offset="60%" stop-color="#D4AF37"/>
+      <stop offset="100%" stop-color="#7A5E12"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Stars / sparkles -->
+  <g fill="url(#goldGrad)">
+    <path d="M90 110 L96 124 L110 130 L96 136 L90 150 L84 136 L70 130 L84 124 Z" opacity="0.85"/>
+    <path d="M620 80 L624 90 L634 94 L624 98 L620 108 L616 98 L606 94 L616 90 Z" opacity="0.7"/>
+    <path d="M650 250 L656 264 L670 270 L656 276 L650 290 L644 276 L630 270 L644 264 Z" opacity="0.85"/>
+    <path d="M70 280 L74 290 L84 294 L74 298 L70 308 L66 298 L56 294 L66 290 Z" opacity="0.7"/>
+    <circle cx="565" cy="60" r="3"/>
+    <circle cx="155" cy="220" r="2.5"/>
+    <circle cx="600" cy="340" r="2.5"/>
+  </g>
+
+  <!-- Rocket above the "O" -->
+  <g transform="translate(343 60)">
+    <path d="M17 0 C 26 8 30 22 30 36 L 30 52 L 4 52 L 4 36 C 4 22 8 8 17 0 Z" fill="url(#goldGrad)"/>
+    <circle cx="17" cy="26" r="5" fill="#1F1430"/>
+    <path d="M4 44 L -6 56 L 4 56 Z" fill="url(#goldGrad)"/>
+    <path d="M30 44 L 40 56 L 30 56 Z" fill="url(#goldGrad)"/>
+    <path d="M10 56 L 17 70 L 24 56 Z" fill="#FFB347"/>
+  </g>
+
+  <!-- Wordmark INNOVA — letter spacing tuned for the planet replacing "O" -->
+  <g font-family="Orbitron, 'Segoe UI', sans-serif" font-weight="900" fill="url(#goldGrad)">
+    <text x="360" y="220" text-anchor="middle" font-size="118" letter-spacing="6">INN</text>
+    <text x="360" y="220" text-anchor="middle" font-size="118" letter-spacing="6" dx="84">VA</text>
+  </g>
+
+  <!-- Planet replacing the "O" in INNOVA -->
+  <g transform="translate(360 180)">
+    <ellipse cx="0" cy="6" rx="60" ry="14" fill="none" stroke="url(#goldGrad)" stroke-width="5" opacity="0.85"/>
+    <circle cx="0" cy="0" r="34" fill="url(#planetGrad)"/>
+    <path d="M-30 -4 Q 0 -16 30 -4" stroke="#7A5E12" stroke-width="3" fill="none" opacity="0.55"/>
+    <path d="M-26 8 Q 0 18 28 6" stroke="#7A5E12" stroke-width="3" fill="none" opacity="0.45"/>
+  </g>
+
+  <!-- Wordmark STARS -->
+  <g font-family="Orbitron, 'Segoe UI', sans-serif" font-weight="900" fill="url(#goldGrad)">
+    <text x="360" y="340" text-anchor="middle" font-size="98" letter-spacing="14">STARS</text>
+  </g>
+</svg>

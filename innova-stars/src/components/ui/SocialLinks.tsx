@@ -42,29 +42,28 @@ function TikTokIcon(props: SVGProps<SVGSVGElement>): JSX.Element {
   );
 }
 
-function TwitterIcon(props: SVGProps<SVGSVGElement>): JSX.Element {
-  // X / Twitter glyph
+function FacebookIcon(props: SVGProps<SVGSVGElement>): JSX.Element {
   return (
     <svg viewBox="0 0 24 24" fill="currentColor" {...props}>
-      <path d="M17.53 3H20.7l-7 7.99L22 21h-6.36l-5-6.53L4.9 21H1.72l7.5-8.56L1.5 3h6.52l4.52 5.98L17.53 3zm-1.11 16.05h1.76L7.62 4.86H5.74l10.68 14.19z" />
+      <path d="M22 12.07C22 6.5 17.52 2 12 2S2 6.5 2 12.07c0 5.02 3.66 9.18 8.44 9.93v-7.02H7.9v-2.91h2.54V9.85c0-2.51 1.49-3.9 3.77-3.9 1.09 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.78-1.63 1.57v1.88h2.78l-.44 2.91h-2.34V22c4.78-.75 8.44-4.91 8.44-9.93z" />
     </svg>
   );
 }
 
-function YouTubeIcon(props: SVGProps<SVGSVGElement>): JSX.Element {
+function WhatsAppIcon(props: SVGProps<SVGSVGElement>): JSX.Element {
   return (
     <svg viewBox="0 0 24 24" fill="currentColor" {...props}>
-      <path d="M23.5 6.2a3.02 3.02 0 0 0-2.13-2.14C19.48 3.5 12 3.5 12 3.5s-7.48 0-9.37.56A3.02 3.02 0 0 0 .5 6.2C0 8.1 0 12 0 12s0 3.9.5 5.8a3.02 3.02 0 0 0 2.13 2.14C4.52 20.5 12 20.5 12 20.5s7.48 0 9.37-.56a3.02 3.02 0 0 0 2.13-2.14C24 15.9 24 12 24 12s0-3.9-.5-5.8zM9.6 15.6V8.4l6.24 3.6-6.24 3.6z" />
+      <path d="M19.05 4.91A10 10 0 0 0 4.5 18.46L3 22l3.62-1.47a10 10 0 0 0 4.78 1.22h.01a10 10 0 0 0 7.64-16.84zM12.41 20.1h-.01a8.32 8.32 0 0 1-4.24-1.16l-.3-.18-2.15.87.91-2.1-.2-.32a8.32 8.32 0 1 1 5.99 2.89zm4.78-6.22c-.26-.13-1.55-.77-1.79-.85s-.42-.13-.59.13-.68.85-.83 1.03-.31.19-.57.06a6.81 6.81 0 0 1-2-1.24 7.55 7.55 0 0 1-1.39-1.73c-.15-.26 0-.4.11-.52s.26-.31.39-.46a1.69 1.69 0 0 0 .26-.43.48.48 0 0 0 0-.46c-.06-.13-.59-1.42-.81-1.94s-.43-.44-.59-.45h-.5a.96.96 0 0 0-.7.32 2.92 2.92 0 0 0-.91 2.18 5.06 5.06 0 0 0 1.07 2.69 11.62 11.62 0 0 0 4.45 3.94 14.95 14.95 0 0 0 1.49.55 3.58 3.58 0 0 0 1.65.1 2.7 2.7 0 0 0 1.77-1.25 2.19 2.19 0 0 0 .15-1.25c-.06-.11-.23-.17-.49-.3z" />
     </svg>
   );
 }
 
 const ENTRIES: SocialEntry[] = [
+  { label: 'WhatsApp', href: SITE_CONFIG.social.whatsapp, Icon: WhatsAppIcon },
   { label: 'Instagram', href: SITE_CONFIG.social.instagram, Icon: InstagramIcon },
   { label: 'LinkedIn', href: SITE_CONFIG.social.linkedin, Icon: LinkedInIcon },
+  { label: 'Facebook', href: SITE_CONFIG.social.facebook, Icon: FacebookIcon },
   { label: 'TikTok', href: SITE_CONFIG.social.tiktok, Icon: TikTokIcon },
-  { label: 'Twitter', href: SITE_CONFIG.social.twitter, Icon: TwitterIcon },
-  { label: 'YouTube', href: SITE_CONFIG.social.youtube, Icon: YouTubeIcon },
 ];
 
 /** Horizontal row of social icon buttons with gold hover. */

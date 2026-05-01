@@ -4,7 +4,6 @@ import { useGSAP } from '@gsap/react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { ArrowRight } from 'lucide-react';
-import dynamic from 'next/dynamic';
 import { useRef } from 'react';
 
 import { MagneticButton } from '@/components/ui/MagneticButton';
@@ -14,11 +13,6 @@ import { ScrollIndicator } from '@/components/ui/ScrollIndicator';
 if (typeof window !== 'undefined') {
   gsap.registerPlugin(ScrollTrigger);
 }
-
-const Starfield = dynamic(
-  () => import('@/components/ui/Starfield').then((m) => m.Starfield),
-  { ssr: false },
-);
 
 const TAGLINE = 'LEAD YOU TO THE STARS';
 
@@ -47,7 +41,6 @@ export function Hero(): JSX.Element {
   const logoRef = useRef<HTMLDivElement | null>(null);
   const taglineRef = useRef<HTMLHeadingElement | null>(null);
   const subtitleRef = useRef<HTMLParagraphElement | null>(null);
-  const warpProgressRef = useRef<number>(0);
 
   useGSAP(
     () => {
@@ -90,10 +83,8 @@ export function Hero(): JSX.Element {
         2.2,
       );
 
-      const isMobile =
-        typeof window !== 'undefined' && window.innerWidth < 768;
-
-      // Scroll-linked: content fades out, lifts, blurs; Starfield warps.
+      // Scroll-linked: content fades, lifts and blurs as the user scrolls
+      // out of the hero — handing the visual baton over to the next section.
       const contentFade = gsap.to(contentRef.current, {
         opacity: 0,
         y: -100,
@@ -104,9 +95,6 @@ export function Hero(): JSX.Element {
           start: 'top top',
           end: 'bottom top',
           scrub: 1,
-          onUpdate: (self) => {
-            warpProgressRef.current = isMobile ? 0 : self.progress;
-          },
         },
       });
 
@@ -125,26 +113,7 @@ export function Hero(): JSX.Element {
       id="home"
       aria-label="Innova Stars hero"
       className="relative h-screen w-full overflow-hidden"
-      style={{
-        background:
-          'radial-gradient(ellipse at center, rgba(212,175,55,0.05) 0%, transparent 60%), #0A0A1A',
-      }}
     >
-      <div className="absolute inset-0 z-0">
-        <Starfield warpProgressRef={warpProgressRef} />
-      </div>
-
-      {/* Subtle vignette — Starfield's own vignette is on the static layer,
-          this one sits above all canvas activity for an extra edge falloff. */}
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-0 z-[1]"
-        style={{
-          background:
-            'radial-gradient(ellipse at center, transparent 40%, rgba(0,0,0,0.6) 100%)',
-        }}
-      />
-
       <div
         ref={contentRef}
         className="relative z-10 flex h-full flex-col items-center justify-center px-6 text-center will-change-[transform,opacity,filter]"
@@ -179,8 +148,13 @@ export function Hero(): JSX.Element {
 
           <p
             ref={subtitleRef}
-            className="mt-5 font-inter text-sm text-white/70 sm:text-base md:text-xl"
+            className="mt-5 font-inter text-sm text-white/75 sm:text-base md:text-xl"
+            style={{ textShadow: '0 0 16px rgba(0,0,0,0.6)' }}
           >
+            <span className="font-orbitron tracking-[0.18em] text-gold">
+              INNOVA STARS
+            </span>
+            <span className="mx-2 text-white/40">—</span>
             Innovation meets imagination
           </p>
 

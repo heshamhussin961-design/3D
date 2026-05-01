@@ -6,19 +6,18 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useEffect, useRef, useState } from 'react';
 
 import { ConstellationMap } from '@/components/ui/ConstellationMap';
-import { LazyVideo } from '@/components/ui/LazyVideo';
 import { SectionNumber } from '@/components/ui/SectionNumber';
 import { ServiceCard } from '@/components/ui/ServiceCard';
 import { SERVICES } from '@/lib/constants/services';
+
+// Mobile/tablet grid shows individual services only — the constellation
+// hub doesn't make sense as a card.
+const GRID_SERVICES = SERVICES.filter((s) => !s.isHub);
 
 if (typeof window !== 'undefined') {
   gsap.registerPlugin(ScrollTrigger);
 }
 
-/** Looping constellation video used as the section's ambient backdrop. */
-const BACKDROP_VIDEO = '/videos/constellation.mp4';
-/** Poster shown until the video loads (and on `prefers-reduced-motion`). */
-const BACKDROP_POSTER = '/frames/services/frame_0180.webp';
 const DESKTOP_BREAKPOINT = 1024;
 
 /**
@@ -33,12 +32,8 @@ export function Services(): JSX.Element {
   const headerRef = useRef<HTMLDivElement | null>(null);
   const gridRef = useRef<HTMLDivElement | null>(null);
   const [isDesktop, setIsDesktop] = useState<boolean>(true);
-  // Video is mounted client-only to avoid hydration mismatch — autoplay
-  // state diverges between server HTML and client immediately.
-  const [mounted, setMounted] = useState<boolean>(false);
 
   useEffect(() => {
-    setMounted(true);
     function check(): void {
       setIsDesktop(window.innerWidth >= DESKTOP_BREAKPOINT);
     }
@@ -89,30 +84,18 @@ export function Services(): JSX.Element {
       ref={sectionRef}
       id="services"
       aria-label="Our services"
-      className="relative overflow-hidden bg-deep-space px-6 py-24 md:px-10"
+      className="relative overflow-hidden px-6 py-24 md:px-10"
     >
-      {/* Ambient looping constellation backdrop. Static poster on SSR,
-          autoplaying video swaps in after mount (avoids hydration mismatch). */}
+      {/* Local readability scrim — keeps text legible against the global
+          Innova video backdrop without occluding it. */}
       <div
         aria-hidden="true"
         className="pointer-events-none absolute inset-0 -z-10"
-      >
-        {mounted ? (
-          <LazyVideo
-            src={BACKDROP_VIDEO}
-            poster={BACKDROP_POSTER}
-            className="h-full w-full object-cover opacity-30"
-          />
-        ) : (
-          // eslint-disable-next-line @next/next/no-img-element
-          <img
-            src={BACKDROP_POSTER}
-            alt=""
-            className="h-full w-full object-cover opacity-30"
-          />
-        )}
-        <div className="absolute inset-0 bg-gradient-to-b from-deep-space/40 via-deep-space/60 to-deep-space" />
-      </div>
+        style={{
+          background:
+            'radial-gradient(ellipse at center, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.85) 100%)',
+        }}
+      />
 
       <div ref={headerRef} className="mx-auto max-w-2xl text-center">
         <div data-reveal className="flex items-center justify-center gap-3">
@@ -132,7 +115,7 @@ export function Services(): JSX.Element {
           data-reveal
           className="mt-4 font-inter text-base text-white/60 md:text-lg"
         >
-          Seven stars guiding your brand to success
+          A constellation of services guiding your brand to success
         </p>
       </div>
 
@@ -144,7 +127,7 @@ export function Services(): JSX.Element {
             ref={gridRef}
             className="grid grid-cols-1 gap-5 md:grid-cols-2"
           >
-            {SERVICES.map((service) => (
+            {GRID_SERVICES.map((service) => (
               <div key={service.id} data-grid-card>
                 <ServiceCard service={service} variant="grid" />
               </div>

@@ -5,9 +5,13 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import {
   Brain,
+  Code,
+  Globe,
   Share2,
+  ShoppingCart,
   Smartphone,
   Sparkles,
+  Star,
   TrendingUp,
   Users,
   Video,
@@ -37,6 +41,10 @@ const ICON_MAP: Record<ServiceIcon, LucideIcon> = {
   TrendingUp,
   Smartphone,
   Sparkles,
+  Code,
+  ShoppingCart,
+  Globe,
+  Star,
 };
 
 const VIEWBOX_W = 1000;
@@ -238,6 +246,7 @@ export function ConstellationMap(): JSX.Element {
       {SERVICES.map((service) => {
         const Icon = ICON_MAP[service.icon];
         const faded = activeId !== null && activeId !== service.id;
+        const hub = service.isHub === true;
         return (
           <button
             key={service.id}
@@ -260,36 +269,56 @@ export function ConstellationMap(): JSX.Element {
           >
             <span
               aria-hidden="true"
-              className="absolute inset-0 -m-5 animate-pulse-glow rounded-full"
+              className={cn(
+                'absolute inset-0 animate-pulse-glow rounded-full',
+                hub ? '-m-9' : '-m-5',
+              )}
               style={{
-                background:
-                  'radial-gradient(circle, rgba(212,175,55,0.45) 0%, rgba(212,175,55,0) 70%)',
+                background: hub
+                  ? 'radial-gradient(circle, rgba(212,175,55,0.7) 0%, rgba(212,175,55,0) 70%)'
+                  : 'radial-gradient(circle, rgba(212,175,55,0.45) 0%, rgba(212,175,55,0) 70%)',
               }}
             />
-            <span className="relative flex h-10 w-10 items-center justify-center rounded-full bg-gold text-black shadow-[0_0_20px_rgba(212,175,55,0.7)]">
-              <Icon className="h-4 w-4" strokeWidth={2.2} />
+            <span
+              className={cn(
+                'relative flex items-center justify-center rounded-full bg-gold text-black',
+                hub
+                  ? 'h-16 w-16 shadow-[0_0_36px_rgba(212,175,55,0.95)] ring-2 ring-gold/60'
+                  : 'h-10 w-10 shadow-[0_0_20px_rgba(212,175,55,0.7)]',
+              )}
+            >
+              <Icon
+                className={hub ? 'h-7 w-7' : 'h-4 w-4'}
+                strokeWidth={2.2}
+              />
             </span>
           </button>
         );
       })}
 
-      {SERVICES.map((service) => (
-        <div
-          key={`${service.id}-label`}
-          id={`${service.id}-label`}
-          data-node-label
-          className={cn(
-            'pointer-events-none absolute -translate-x-1/2 px-2 text-center font-orbitron text-[11px] font-medium tracking-[0.1em] text-white/70 transition-colors duration-300',
-            activeId === service.id && 'text-gold',
-          )}
-          style={{
-            top: `calc(${service.position.y}% + 28px)`,
-            left: `${service.position.x}%`,
-          }}
-        >
-          {service.name}
-        </div>
-      ))}
+      {SERVICES.map((service) => {
+        const hub = service.isHub === true;
+        return (
+          <div
+            key={`${service.id}-label`}
+            id={`${service.id}-label`}
+            data-node-label
+            className={cn(
+              'pointer-events-none absolute -translate-x-1/2 px-2 text-center font-orbitron tracking-[0.1em] transition-colors duration-300',
+              hub
+                ? 'text-[14px] font-bold tracking-[0.2em] text-gold'
+                : 'text-[11px] font-medium text-white/70',
+              activeId === service.id && 'text-gold',
+            )}
+            style={{
+              top: `calc(${service.position.y}% + ${hub ? 44 : 28}px)`,
+              left: `${service.position.x}%`,
+            }}
+          >
+            {service.name}
+          </div>
+        );
+      })}
 
       {tooltip ? (
         <div
