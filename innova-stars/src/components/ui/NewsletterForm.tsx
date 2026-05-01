@@ -110,7 +110,14 @@ export function NewsletterForm({ className }: NewsletterFormProps): JSX.Element 
         <p className="font-inter text-xs text-red-400">{error}</p>
       ) : (
         <p className="font-inter text-xs text-white/40">
-          Monthly insights. No spam, ever.
+          Monthly insights. No spam, ever. See our{' '}
+          <a
+            href="/privacy"
+            className="underline-offset-4 hover:text-gold hover:underline"
+          >
+            Privacy Policy
+          </a>
+          .
         </p>
       )}
     </form>

@@ -343,11 +343,34 @@ export function ContactModal({
                     onChange={(e) => update('message', e.target.value)}
                   />
 
+                  <p className="font-inter text-[11px] leading-relaxed text-white/45">
+                    By submitting this form, you agree to our{' '}
+                    <a
+                      href="/privacy"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-gold underline-offset-4 hover:underline"
+                    >
+                      Privacy Policy
+                    </a>{' '}
+                    and{' '}
+                    <a
+                      href="/terms"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-gold underline-offset-4 hover:underline"
+                    >
+                      Terms of Service
+                    </a>
+                    . We respond within 24 hours and never share your
+                    details.
+                  </p>
+
                   <button
                     type="submit"
                     disabled={submitting}
                     className={cn(
-                      'mt-2 inline-flex w-full items-center justify-center gap-3 bg-gold px-12 py-4 font-orbitron text-sm font-semibold uppercase tracking-[0.2em] text-black transition-all duration-300 ease-out hover:scale-[1.02] hover:shadow-[0_0_40px_rgba(212,175,55,0.6)] disabled:cursor-not-allowed disabled:opacity-60',
+                      'inline-flex w-full items-center justify-center gap-3 bg-gold px-12 py-4 font-orbitron text-sm font-semibold uppercase tracking-[0.2em] text-black transition-all duration-300 ease-out hover:scale-[1.02] hover:shadow-[0_0_40px_rgba(212,175,55,0.6)] disabled:cursor-not-allowed disabled:opacity-60',
                     )}
                   >
                     {submitting ? (
