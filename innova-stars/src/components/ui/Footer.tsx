@@ -114,7 +114,8 @@ export function Footer(): JSX.Element {
       <div className="mx-auto mt-16 max-w-[1400px] border-t border-gold/15 pt-6">
         <div className="flex flex-col items-center justify-between gap-3 md:flex-row">
           <p className="font-inter text-xs text-white/40">
-            © {year} {SITE_CONFIG.name}. All rights reserved.
+            © 2026–{year} {SITE_CONFIG.name} for Marketing &amp; Technology.
+            All rights reserved.
           </p>
           <div className="flex items-center gap-4 font-inter text-xs text-white/40">
             <span className="hidden md:inline">Crafted in UAE</span>
@@ -135,6 +136,13 @@ export function Footer(): JSX.Element {
             </a>
           </div>
         </div>
+        <p className="mt-4 text-center font-inter text-[11px] leading-relaxed text-white/35 md:text-left">
+          The {SITE_CONFIG.name} name, logo, wordmark, and visual identity
+          are trademarks of {SITE_CONFIG.name} for Marketing &amp;
+          Technology. Copying, redistribution, or reuse of any part of this
+          site — code, copy, video, illustrations, or design — is
+          prohibited without prior written permission.
+        </p>
       </div>
     </footer>
   );

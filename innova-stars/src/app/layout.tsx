@@ -49,6 +49,12 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: SITE_CONFIG.name, url: SITE_CONFIG.url }],
   creator: SITE_CONFIG.name,
+  publisher: `${SITE_CONFIG.name} for Marketing & Technology`,
+  applicationName: SITE_CONFIG.name,
+  other: {
+    copyright: `© 2026 ${SITE_CONFIG.name} for Marketing & Technology. All rights reserved.`,
+    'og:rights': `${SITE_CONFIG.name}`,
+  },
   // Note: og:image (and twitter:image fallback) are generated dynamically
   // by `src/app/opengraph-image.tsx`.
   openGraph: {
