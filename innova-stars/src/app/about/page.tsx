@@ -85,6 +85,14 @@ const TEAM: TeamMember[] = [
     bio: 'Builds the engineering and AI layer behind every Innova Stars product — from web platforms to intelligent automation.',
     photo: '/team/hussein.jpeg',
   },
+  {
+    id: 'taghreed',
+    initials: 'TG',
+    name: 'Taghreed',
+    role: 'Brand Voice & Strategy',
+    bio: 'Shapes the words, the tagline, and the way every Innova Stars story reaches its audience.',
+    photo: '/team/Taghreed.jpeg',
+  },
 ];
 
 export default function AboutPage(): JSX.Element {
@@ -161,8 +169,8 @@ export default function AboutPage(): JSX.Element {
           Small by design.
         </h2>
         <p className="mt-4 max-w-2xl font-inter text-base text-white/60">
-          A senior trio doing the work directly. No layered handoffs, no
-          juniors put on your retainer. We scale up only when a project
+          A small senior team doing the work directly. No layered handoffs,
+          no juniors put on your retainer. We scale up only when a project
           genuinely calls for it.
         </p>
 

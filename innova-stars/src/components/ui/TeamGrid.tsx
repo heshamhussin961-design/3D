@@ -74,10 +74,19 @@ export function TeamGrid({ members }: TeamGridProps): JSX.Element {
     { scope: gridRef },
   );
 
+  // Pick the densest column count that doesn't leave a single member
+  // hanging on a row by themselves.
+  const lgColsClass =
+    members.length === 3
+      ? 'lg:grid-cols-3'
+      : members.length === 4
+        ? 'lg:grid-cols-4'
+        : 'lg:grid-cols-3';
+
   return (
     <div
       ref={gridRef}
-      className="mt-12 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3"
+      className={`mt-12 grid grid-cols-1 gap-8 sm:grid-cols-2 ${lgColsClass}`}
     >
       {members.map((m) => (
         <TeamCard key={m.id} member={m} />
