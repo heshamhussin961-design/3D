@@ -3,7 +3,7 @@
  */
 export const SITE_CONFIG = {
   name: 'Innova Stars',
-  tagline: 'Lead you to the stars',
+  tagline: 'Lead your business to the stars',
   description:
     'A cosmic marketing agency crafting stellar experiences through AI-powered solutions and creative excellence.',
   url: 'https://innova-stars.ae',

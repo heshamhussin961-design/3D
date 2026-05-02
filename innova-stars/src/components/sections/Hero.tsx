@@ -14,7 +14,7 @@ if (typeof window !== 'undefined') {
   gsap.registerPlugin(ScrollTrigger);
 }
 
-const TAGLINE = 'LEAD YOU TO THE STARS';
+const TAGLINE = 'LEAD YOUR BUSINESS TO THE STARS';
 
 function splitLetters(text: string): { char: string; key: string }[] {
   return Array.from(text).map((char, index) => ({

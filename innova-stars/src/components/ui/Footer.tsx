@@ -32,7 +32,7 @@ export function Footer(): JSX.Element {
         <div className="flex flex-col gap-4">
           <Logo />
           <p className="font-orbitron text-xs tracking-[0.2em] text-gold">
-            LEAD YOU TO THE STARS
+            LEAD YOUR BUSINESS TO THE STARS
           </p>
           <p className="max-w-xs font-inter text-sm leading-relaxed text-white/60">
             {SITE_CONFIG.description}

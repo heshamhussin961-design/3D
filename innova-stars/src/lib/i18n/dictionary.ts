@@ -22,7 +22,10 @@ export const dictionary: Dict = {
   'nav.careers': { en: 'Careers', ar: 'وظائف' },
   'nav.contact': { en: 'Contact', ar: 'اتصل بنا' },
 
-  'hero.tagline': { en: 'Lead you to the stars', ar: 'نقودك إلى النجوم' },
+  'hero.tagline': {
+    en: 'Lead your business to the stars',
+    ar: 'نقود أعمالك إلى النجوم',
+  },
   'hero.subtitle': {
     en: 'Innovation meets imagination',
     ar: 'الابتكار يلتقي بالخيال',

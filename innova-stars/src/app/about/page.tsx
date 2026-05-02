@@ -9,6 +9,7 @@ import {
 } from 'lucide-react';
 
 import { MagneticButton } from '@/components/ui/MagneticButton';
+import { TeamGrid } from '@/components/ui/TeamGrid';
 import { SITE_CONFIG } from '@/lib/constants';
 
 export const metadata: Metadata = {
@@ -59,40 +60,30 @@ interface TeamMember {
   photo?: string;
 }
 
-// To attach a real photo, save the file as /public/team/<id>.jpg and add
-// `photo: '/team/<id>.jpg'` to the corresponding entry below.
 const TEAM: TeamMember[] = [
   {
-    id: 'founder',
-    initials: 'IS',
-    name: 'Founder',
-    role: 'Founder · Strategy',
-    bio: 'Brand & product strategy. Building Innova Stars from Abu Dhabi.',
-    // photo: '/team/founder.jpg',
+    id: 'mohamed',
+    initials: 'MN',
+    name: 'Mohamed Al Natsheh',
+    role: 'Founder',
+    bio: 'Steering the studio. Strategy, partnerships, and the long arc of every brand we touch.',
+    photo: '/team/mohamed.jpeg',
   },
   {
-    id: 'creative',
-    initials: 'CD',
-    name: 'Creative Director',
-    role: 'Creative · Identity',
-    bio: 'Identity systems, art direction, and editorial design.',
-    // photo: '/team/creative.jpg',
+    id: 'magdi',
+    initials: 'MG',
+    name: 'Magdy',
+    role: 'Graphic Designer',
+    bio: 'Visual identity, art direction, and the craft that makes our work look unmistakable.',
+    photo: '/team/magdi.jpeg',
   },
   {
-    id: 'ai',
-    initials: 'AI',
-    name: 'Head of AI',
-    role: 'AI · Engineering',
-    bio: 'Applied ML, automation, and AI product features.',
-    // photo: '/team/ai.jpg',
-  },
-  {
-    id: 'growth',
-    initials: 'GR',
-    name: 'Head of Growth',
-    role: 'Growth · Analytics',
-    bio: 'Performance marketing, SEO, and conversion analytics.',
-    // photo: '/team/growth.jpg',
+    id: 'hussein',
+    initials: 'HE',
+    name: 'Hussein',
+    role: 'Full-Stack Developer & AI Specialist',
+    bio: 'Builds the engineering and AI layer behind every Innova Stars product — from web platforms to intelligent automation.',
+    photo: '/team/hussein.jpeg',
   },
 ];
 
@@ -170,44 +161,12 @@ export default function AboutPage(): JSX.Element {
           Small by design.
         </h2>
         <p className="mt-4 max-w-2xl font-inter text-base text-white/60">
-          Four senior partners doing the work directly. No layered handoffs,
-          no juniors put on your retainer. Bigger when a project genuinely
-          calls for it.
+          A senior trio doing the work directly. No layered handoffs, no
+          juniors put on your retainer. We scale up only when a project
+          genuinely calls for it.
         </p>
 
-        <div className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {TEAM.map((m) => (
-            <div
-              key={m.id}
-              className="flex flex-col gap-4 border border-white/10 bg-black/30 p-6 transition-colors duration-300 hover:border-gold/30"
-            >
-              {m.photo ? (
-                // eslint-disable-next-line @next/next/no-img-element
-                <img
-                  src={m.photo}
-                  alt={`${m.name} — ${m.role}`}
-                  className="h-20 w-20 object-cover ring-1 ring-gold/40"
-                  loading="lazy"
-                />
-              ) : (
-                <div className="flex h-14 w-14 items-center justify-center bg-gold font-orbitron text-base font-bold tracking-[0.05em] text-black">
-                  {m.initials}
-                </div>
-              )}
-              <div>
-                <p className="font-orbitron text-base font-semibold text-white">
-                  {m.name}
-                </p>
-                <p className="font-inter text-xs uppercase tracking-[0.2em] text-gold">
-                  {m.role}
-                </p>
-              </div>
-              <p className="font-inter text-sm leading-relaxed text-white/60">
-                {m.bio}
-              </p>
-            </div>
-          ))}
-        </div>
+        <TeamGrid members={TEAM} />
       </section>
 
       {/* Careers anchor — full page lives at /careers */}
