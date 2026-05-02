@@ -48,9 +48,7 @@ export default function ServicePage({ params }: RouteParams): JSX.Element {
   // perfect "related services" without duplicating logic. Skip the hub.
   const related = service.connections
     .map((id) => SERVICES_BY_ID[id])
-    .filter(
-      (s): s is (typeof SERVICES)[number] => Boolean(s) && !s.isHub,
-    );
+    .filter((s): s is (typeof SERVICES)[number] => Boolean(s) && !s.isHub);
 
   // JSON-LD: structured data for the Service entity.
   const jsonLd = {

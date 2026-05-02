@@ -29,20 +29,16 @@ export function Logo({ className }: LogoProps): JSX.Element {
       onClick={handleClick}
       aria-label="Innova Stars — back to top"
       className={cn(
-        'group inline-flex items-center gap-3 outline-none focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-2 focus-visible:ring-offset-deep-space',
+        'group inline-flex items-center outline-none focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-2 focus-visible:ring-offset-deep-space',
         className,
       )}
     >
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
-        src="/innova-logo.svg"
-        alt=""
-        aria-hidden="true"
-        className="h-9 w-auto transition-transform duration-300 group-hover:scale-110 md:h-10"
+        src="/logo.png"
+        alt="Innova Stars"
+        className="h-12 w-auto transition-transform duration-300 group-hover:scale-110 md:h-14"
       />
-      <span className="font-orbitron text-base font-bold tracking-[0.1em] text-gold md:text-lg">
-        INNOVA STARS
-      </span>
     </a>
   );
 }

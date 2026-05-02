@@ -18,7 +18,7 @@ const ContactModal = dynamic(
   { ssr: false },
 );
 
-const SECTION_IDS = ['home', 'services', 'ai-core', 'stats', 'contact'];
+const SECTION_IDS = ['home', 'services', 'stats', 'contact'];
 
 /**
  * Sticky top navigation. Transparent at page top, frosted + bordered when
@@ -77,9 +77,14 @@ export function Navigation(): JSX.Element {
   function isActiveLink(href: string): boolean {
     if (href === '/') return isHome && activeSectionId === 'home';
     if (href.startsWith('/#')) {
-      return isHome && href.replace('/#', '') === activeSectionId;
+      // On home, match against the currently visible section.
+      if (isHome) return href.replace('/#', '') === activeSectionId;
+      // Off home, the only "Services" anchor that should still highlight
+      // the nav link is when the user is on a service detail page.
+      if (href === '/#services') return pathname.startsWith('/services');
+      return false;
     }
-    // For pure paths (/work, /about), match by pathname.
+    // For pure paths (/about, /careers), match by pathname.
     return pathname === href || pathname.startsWith(`${href}/`);
   }
 
@@ -121,7 +126,10 @@ export function Navigation(): JSX.Element {
         <div className="mx-auto flex max-w-[1400px] items-center justify-between px-6 md:px-10">
           <Logo />
 
-          <nav className="hidden items-center gap-8 lg:flex" aria-label="Primary">
+          <nav
+            className="hidden items-center gap-8 lg:flex"
+            aria-label="Primary"
+          >
             {NAV_LINKS.map((link) => {
               const isActive = isActiveLink(link.href);
               return (

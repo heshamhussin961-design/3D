@@ -15,9 +15,7 @@ interface ContactModalProps {
 
 interface FormValues {
   name: string;
-  email: string;
-  company: string;
-  budget: string;
+  phone: string;
   message: string;
   /** Honeypot — kept blank for humans, bots fill it. */
   website: string;
@@ -25,36 +23,31 @@ interface FormValues {
 
 interface FieldErrors {
   name?: string;
-  email?: string;
-  budget?: string;
+  phone?: string;
   message?: string;
 }
 
 const INITIAL: FormValues = {
   name: '',
-  email: '',
-  company: '',
-  budget: '',
+  phone: '',
   message: '',
   website: '',
 };
 
-const BUDGET_OPTIONS = [
-  'Under 10K AED',
-  '10K - 25K AED',
-  '25K - 50K AED',
-  '50K+ AED',
-];
+// Loose phone validation — accepts +/digits/spaces/dashes/parens, 7–18 digits.
+const PHONE_DIGITS_RE = /\d/g;
 
 function validate(values: FormValues): FieldErrors {
   const errors: FieldErrors = {};
   if (!values.name.trim()) errors.name = 'Please enter your name.';
-  if (!values.email.trim()) {
-    errors.email = 'Email is required.';
-  } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(values.email.trim())) {
-    errors.email = 'That doesn’t look like a valid email.';
+  if (!values.phone.trim()) {
+    errors.phone = 'Phone number is required.';
+  } else {
+    const digits = values.phone.match(PHONE_DIGITS_RE)?.length ?? 0;
+    if (digits < 7 || digits > 18) {
+      errors.phone = 'Please enter a valid phone number.';
+    }
   }
-  if (!values.budget) errors.budget = 'Pick a budget range.';
   if (!values.message.trim())
     errors.message = 'Tell us a bit about your mission.';
   return errors;
@@ -172,7 +165,10 @@ export function ContactModal({
     }
   }
 
-  function update<K extends keyof FormValues>(key: K, value: FormValues[K]): void {
+  function update<K extends keyof FormValues>(
+    key: K,
+    value: FormValues[K],
+  ): void {
     setValues((prev) => ({ ...prev, [key]: value }));
     if (errors[key as keyof FieldErrors]) {
       setErrors((prev) => ({ ...prev, [key]: undefined }));
@@ -215,7 +211,10 @@ export function ContactModal({
 
             {submitted ? (
               <div className="flex flex-col items-center gap-4 py-8 text-center">
-                <CheckCircle2 className="h-14 w-14 text-gold" strokeWidth={1.5} />
+                <CheckCircle2
+                  className="h-14 w-14 text-gold"
+                  strokeWidth={1.5}
+                />
                 <h2
                   id={titleId}
                   className="font-orbitron text-2xl font-bold text-gold"
@@ -280,58 +279,17 @@ export function ContactModal({
                     onChange={(e) => update('name', e.target.value)}
                   />
                   <Input
-                    name="email"
-                    label="Email"
-                    type="email"
+                    name="phone"
+                    label="Phone Number"
+                    type="tel"
+                    inputMode="tel"
+                    autoComplete="tel"
+                    placeholder="+971 ..."
                     required
-                    value={values.email}
-                    error={errors.email}
-                    onChange={(e) => update('email', e.target.value)}
+                    value={values.phone}
+                    error={errors.phone}
+                    onChange={(e) => update('phone', e.target.value)}
                   />
-                  <Input
-                    name="company"
-                    label="Company"
-                    value={values.company}
-                    onChange={(e) => update('company', e.target.value)}
-                  />
-
-                  <div className="flex flex-col gap-2">
-                    <label
-                      htmlFor="budget"
-                      className="font-inter text-xs font-medium uppercase tracking-[0.15em] text-gold"
-                    >
-                      Budget Range
-                      <span aria-hidden="true" className="ml-1 text-gold-light">
-                        *
-                      </span>
-                    </label>
-                    <select
-                      id="budget"
-                      name="budget"
-                      required
-                      value={values.budget}
-                      aria-invalid={errors.budget ? true : undefined}
-                      onChange={(e) => update('budget', e.target.value)}
-                      className={cn(
-                        'border-0 border-b border-white/30 bg-transparent px-0 py-3 font-inter text-base text-white outline-none transition-colors duration-300 focus:border-gold',
-                        errors.budget && 'border-red-400/70 focus:border-red-400',
-                      )}
-                    >
-                      <option value="" disabled className="bg-deep-space">
-                        Select a range…
-                      </option>
-                      {BUDGET_OPTIONS.map((opt) => (
-                        <option key={opt} value={opt} className="bg-deep-space">
-                          {opt}
-                        </option>
-                      ))}
-                    </select>
-                    {errors.budget ? (
-                      <p className="font-inter text-xs text-red-400">
-                        {errors.budget}
-                      </p>
-                    ) : null}
-                  </div>
 
                   <Textarea
                     name="message"
@@ -362,8 +320,7 @@ export function ContactModal({
                     >
                       Terms of Service
                     </a>
-                    . We respond within 24 hours and never share your
-                    details.
+                    . We respond within 24 hours and never share your details.
                   </p>
 
                   <button

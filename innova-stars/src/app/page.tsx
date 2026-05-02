@@ -1,4 +1,3 @@
-import { AICore } from '@/components/sections/AICore';
 import { CTA } from '@/components/sections/CTA';
 import { Hero } from '@/components/sections/Hero';
 import { Problem } from '@/components/sections/Problem';
@@ -13,7 +12,6 @@ export default function Home(): JSX.Element {
       <RocketLaunch />
       <Problem />
       <Services />
-      <AICore />
       <Stats />
       <CTA />
     </main>

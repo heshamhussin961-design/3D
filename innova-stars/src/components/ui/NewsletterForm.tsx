@@ -13,7 +13,9 @@ interface NewsletterFormProps {
  * Compact email-only newsletter signup. Posts to `/api/newsletter`.
  * Two visible states: input + button, or a success badge after submit.
  */
-export function NewsletterForm({ className }: NewsletterFormProps): JSX.Element {
+export function NewsletterForm({
+  className,
+}: NewsletterFormProps): JSX.Element {
   const [email, setEmail] = useState('');
   const [website, setWebsite] = useState(''); // honeypot
   const [status, setStatus] = useState<'idle' | 'submitting' | 'ok' | 'error'>(

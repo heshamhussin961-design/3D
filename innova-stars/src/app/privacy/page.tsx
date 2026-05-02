@@ -47,12 +47,12 @@ export default function PrivacyPage(): JSX.Element {
         </div>
 
         <p className="mt-8 max-w-3xl font-inter text-base leading-relaxed text-white/75 md:text-lg">
-          {SITE_CONFIG.name} for Marketing &amp; Technology (“we”, “us”,
-          “our”, “Innova Stars”) takes your privacy seriously. This document
-          explains exactly what data we collect through{' '}
-          {SITE_CONFIG.url.replace(/^https?:\/\//, '')}, why we collect it,
-          how long we keep it, who we share it with, and the rights you have
-          over it. If anything here is unclear, write to{' '}
+          {SITE_CONFIG.name} for Marketing &amp; Technology (“we”, “us”, “our”,
+          “Innova Stars”) takes your privacy seriously. This document explains
+          exactly what data we collect through{' '}
+          {SITE_CONFIG.url.replace(/^https?:\/\//, '')}, why we collect it, how
+          long we keep it, who we share it with, and the rights you have over
+          it. If anything here is unclear, write to{' '}
           <a
             href={`mailto:${SITE_CONFIG.email}`}
             className="text-gold underline-offset-4 hover:underline"
@@ -89,8 +89,8 @@ export default function PrivacyPage(): JSX.Element {
             <p>
               Innova Stars for Marketing &amp; Technology is a marketing and
               technology studio registered in {SITE_CONFIG.address}. For all
-              privacy matters we act as the “Data Controller” of personal
-              data collected via this website.
+              privacy matters we act as the “Data Controller” of personal data
+              collected via this website.
             </p>
             <p>
               <strong className="text-white">Contact:</strong>{' '}
@@ -105,14 +105,11 @@ export default function PrivacyPage(): JSX.Element {
           </Section>
 
           <Section id="scope" title="2. Scope of this policy">
-            <p>
-              This policy covers personal data we collect through:
-            </p>
+            <p>This policy covers personal data we collect through:</p>
             <ul className="ml-5 list-disc space-y-2">
               <li>
-                The website at{' '}
-                {SITE_CONFIG.url.replace(/^https?:\/\//, '')} and any
-                subdomain we operate.
+                The website at {SITE_CONFIG.url.replace(/^https?:\/\//, '')} and
+                any subdomain we operate.
               </li>
               <li>Our contact and newsletter forms.</li>
               <li>
@@ -121,8 +118,8 @@ export default function PrivacyPage(): JSX.Element {
                 platforms’ own privacy policies.
               </li>
               <li>
-                Our WhatsApp Business number (+971 54 318 0337) for
-                inbound enquiries.
+                Our WhatsApp Business number (+971 54 318 0337) for inbound
+                enquiries.
               </li>
             </ul>
           </Section>
@@ -130,8 +127,8 @@ export default function PrivacyPage(): JSX.Element {
           <Section id="collect" title="3. Information we collect">
             <p>
               We collect only what we need to do business with you. The
-              categories below are exhaustive — if a category isn’t listed,
-              we don’t collect it.
+              categories below are exhaustive — if a category isn’t listed, we
+              don’t collect it.
             </p>
 
             <h3 className="mt-4 font-orbitron text-base font-semibold text-gold">
@@ -143,8 +140,8 @@ export default function PrivacyPage(): JSX.Element {
                 email, optional company, budget range, and message.
               </li>
               <li>
-                <strong className="text-white">Newsletter form:</strong>{' '}
-                email address only.
+                <strong className="text-white">Newsletter form:</strong> email
+                address only.
               </li>
               <li>
                 <strong className="text-white">Email / WhatsApp:</strong>{' '}
@@ -158,18 +155,18 @@ export default function PrivacyPage(): JSX.Element {
             <ul className="ml-5 list-disc space-y-2">
               <li>
                 <strong className="text-white">Technical data:</strong> IP
-                address (used for rate limiting and abuse prevention),
-                browser user-agent, device type, screen size, referrer.
+                address (used for rate limiting and abuse prevention), browser
+                user-agent, device type, screen size, referrer.
               </li>
               <li>
                 <strong className="text-white">Usage data:</strong> pages
                 visited, time on page, scroll depth, errors encountered —
-                gathered through Vercel Analytics in an aggregated and
-                anonymous form.
+                gathered through Vercel Analytics in an aggregated and anonymous
+                form.
               </li>
               <li>
-                <strong className="text-white">Cookies:</strong> see
-                section 11 below.
+                <strong className="text-white">Cookies:</strong> see section 11
+                below.
               </li>
             </ul>
 
@@ -193,35 +190,34 @@ export default function PrivacyPage(): JSX.Element {
                 subscribed.
               </li>
               <li>
-                To send transactional emails (auto-reply confirmation,
-                project updates if you become a client).
+                To send transactional emails (auto-reply confirmation, project
+                updates if you become a client).
               </li>
               <li>
-                To detect and prevent abuse — repeated submissions from the
-                same IP get rate-limited or blocked.
+                To detect and prevent abuse — repeated submissions from the same
+                IP get rate-limited or blocked.
               </li>
               <li>
                 To improve the site through aggregated, non-identifying
                 analytics.
               </li>
               <li>
-                To comply with legal obligations (tax records, court
-                orders, regulatory requests).
+                To comply with legal obligations (tax records, court orders,
+                regulatory requests).
               </li>
             </ul>
             <p>
-              <strong className="text-white">No automated decisions:</strong>{' '}
-              we do not make decisions about you that have legal or
-              significant effects without human review.
+              <strong className="text-white">No automated decisions:</strong> we
+              do not make decisions about you that have legal or significant
+              effects without human review.
             </p>
           </Section>
 
           <Section id="legal-basis" title="5. Legal basis for processing">
             <p>
-              Under the UAE Personal Data Protection Law (Federal Decree-Law
-              45 of 2021, “PDPL”) and the EU/UK General Data Protection
-              Regulation (GDPR) where it applies, we rely on the following
-              legal bases:
+              Under the UAE Personal Data Protection Law (Federal Decree-Law 45
+              of 2021, “PDPL”) and the EU/UK General Data Protection Regulation
+              (GDPR) where it applies, we rely on the following legal bases:
             </p>
             <ul className="ml-5 list-disc space-y-2">
               <li>
@@ -236,12 +232,12 @@ export default function PrivacyPage(): JSX.Element {
               </li>
               <li>
                 <strong className="text-white">Contract</strong> — when you
-                become a client, processing your data is necessary to
-                deliver the service we agreed.
+                become a client, processing your data is necessary to deliver
+                the service we agreed.
               </li>
               <li>
-                <strong className="text-white">Legal obligation</strong> —
-                where we’re required to retain or disclose data by law.
+                <strong className="text-white">Legal obligation</strong> — where
+                we’re required to retain or disclose data by law.
               </li>
             </ul>
           </Section>
@@ -249,10 +245,10 @@ export default function PrivacyPage(): JSX.Element {
           <Section id="sharing" title="6. Sharing your data">
             <p>
               We <strong className="text-white">do not sell</strong> your
-              personal data, and we don’t share it with advertisers. We
-              share data only with vetted sub-processors that help us
-              operate the site, under contracts that bind them to the same
-              standards described here.
+              personal data, and we don’t share it with advertisers. We share
+              data only with vetted sub-processors that help us operate the
+              site, under contracts that bind them to the same standards
+              described here.
             </p>
 
             <div className="mt-4 overflow-x-auto">
@@ -266,16 +262,12 @@ export default function PrivacyPage(): JSX.Element {
                 </thead>
                 <tbody className="divide-y divide-white/10">
                   <tr>
-                    <td className="py-3 pr-4 font-medium text-white">
-                      Vercel
-                    </td>
+                    <td className="py-3 pr-4 font-medium text-white">Vercel</td>
                     <td className="py-3 pr-4">Hosting + analytics</td>
                     <td className="py-3 text-white/60">USA / EU</td>
                   </tr>
                   <tr>
-                    <td className="py-3 pr-4 font-medium text-white">
-                      Resend
-                    </td>
+                    <td className="py-3 pr-4 font-medium text-white">Resend</td>
                     <td className="py-3 pr-4">Transactional email</td>
                     <td className="py-3 text-white/60">USA / EU</td>
                   </tr>
@@ -300,17 +292,17 @@ export default function PrivacyPage(): JSX.Element {
             </div>
 
             <p>
-              We may also disclose your information when legally required —
-              for example, in response to a valid court order, regulatory
-              request, or to enforce our terms.
+              We may also disclose your information when legally required — for
+              example, in response to a valid court order, regulatory request,
+              or to enforce our terms.
             </p>
           </Section>
 
           <Section id="transfers" title="7. International transfers">
             <p>
               Some of our sub-processors are based outside the UAE (United
-              States, European Union). When your data leaves the UAE, we
-              ensure the transfer is protected by:
+              States, European Union). When your data leaves the UAE, we ensure
+              the transfer is protected by:
             </p>
             <ul className="ml-5 list-disc space-y-2">
               <li>
@@ -318,12 +310,11 @@ export default function PrivacyPage(): JSX.Element {
                 Commission, where the recipient is in the EU/UK GDPR scope.
               </li>
               <li>
-                Adequacy decisions issued by the UAE Data Office or the
-                European Commission where they exist.
+                Adequacy decisions issued by the UAE Data Office or the European
+                Commission where they exist.
               </li>
               <li>
-                Industry-standard encryption in transit (TLS 1.2+) and at
-                rest.
+                Industry-standard encryption in transit (TLS 1.2+) and at rest.
               </li>
             </ul>
           </Section>
@@ -379,13 +370,11 @@ export default function PrivacyPage(): JSX.Element {
           </Section>
 
           <Section id="security" title="9. Security measures">
-            <p>
-              We apply industry-standard safeguards to protect your data:
-            </p>
+            <p>We apply industry-standard safeguards to protect your data:</p>
             <ul className="ml-5 list-disc space-y-2">
               <li>
-                TLS 1.2+ encryption for every page and API request, with
-                HSTS preload.
+                TLS 1.2+ encryption for every page and API request, with HSTS
+                preload.
               </li>
               <li>
                 Strict Content Security Policy, X-Frame-Options, and
@@ -393,93 +382,93 @@ export default function PrivacyPage(): JSX.Element {
               </li>
               <li>Rate limiting and bot honeypots on every form.</li>
               <li>
-                Principle of least privilege — only the team members who
-                need access to your data have it, and access is logged.
+                Principle of least privilege — only the team members who need
+                access to your data have it, and access is logged.
               </li>
               <li>
                 Sub-processors vetted for SOC 2, ISO 27001, or equivalent
                 certifications.
               </li>
               <li>
-                Encrypted backups; data deleted from backups within 30 days
-                of the original deletion request.
+                Encrypted backups; data deleted from backups within 30 days of
+                the original deletion request.
               </li>
             </ul>
           </Section>
 
           <Section id="rights" title="10. Your rights">
             <p>
-              Under UAE PDPL and GDPR, you have the rights below. To
-              exercise any of them, email{' '}
+              Under UAE PDPL and GDPR, you have the rights below. To exercise
+              any of them, email{' '}
               <a
                 href={`mailto:${SITE_CONFIG.email}`}
                 className="text-gold underline-offset-4 hover:underline"
               >
                 {SITE_CONFIG.email}
               </a>
-              . We respond within 30 days, free of charge for the first
-              request in any rolling 12-month period.
+              . We respond within 30 days, free of charge for the first request
+              in any rolling 12-month period.
             </p>
             <ul className="ml-5 list-disc space-y-2">
               <li>
-                <strong className="text-white">Access</strong> — get a copy
-                of the personal data we hold about you.
+                <strong className="text-white">Access</strong> — get a copy of
+                the personal data we hold about you.
               </li>
               <li>
-                <strong className="text-white">Rectification</strong> —
-                correct anything inaccurate or incomplete.
+                <strong className="text-white">Rectification</strong> — correct
+                anything inaccurate or incomplete.
               </li>
               <li>
-                <strong className="text-white">Erasure</strong> — have your
-                data deleted (“right to be forgotten”), unless we’re
-                required by law to retain it.
+                <strong className="text-white">Erasure</strong> — have your data
+                deleted (“right to be forgotten”), unless we’re required by law
+                to retain it.
               </li>
               <li>
-                <strong className="text-white">Restriction</strong> — pause
-                our processing while a question is being resolved.
+                <strong className="text-white">Restriction</strong> — pause our
+                processing while a question is being resolved.
               </li>
               <li>
-                <strong className="text-white">Portability</strong> —
-                receive your data in a structured, machine-readable format.
+                <strong className="text-white">Portability</strong> — receive
+                your data in a structured, machine-readable format.
               </li>
               <li>
-                <strong className="text-white">Objection</strong> — object
-                to processing based on our legitimate interests.
+                <strong className="text-white">Objection</strong> — object to
+                processing based on our legitimate interests.
               </li>
               <li>
-                <strong className="text-white">Withdraw consent</strong> —
-                where processing is based on consent (e.g., newsletter), you
-                can withdraw it at any time.
+                <strong className="text-white">Withdraw consent</strong> — where
+                processing is based on consent (e.g., newsletter), you can
+                withdraw it at any time.
               </li>
               <li>
-                <strong className="text-white">Lodge a complaint</strong> —
-                with the UAE Data Office, your local data-protection
-                authority, or a court of competent jurisdiction.
+                <strong className="text-white">Lodge a complaint</strong> — with
+                the UAE Data Office, your local data-protection authority, or a
+                court of competent jurisdiction.
               </li>
             </ul>
           </Section>
 
           <Section id="cookies" title="11. Cookies & tracking">
             <p>
-              We use a minimal set of cookies — no advertising or
-              cross-site tracking. Full list and durations are on our{' '}
+              We use a minimal set of cookies — no advertising or cross-site
+              tracking. Full list and durations are on our{' '}
               <Link
                 href="/cookies"
                 className="text-gold underline-offset-4 hover:underline"
               >
                 Cookie Policy
               </Link>
-              . You control your choice through the consent banner shown
-              on first visit, and you can change it anytime by clearing
-              cookies for our domain.
+              . You control your choice through the consent banner shown on
+              first visit, and you can change it anytime by clearing cookies for
+              our domain.
             </p>
           </Section>
 
           <Section id="children" title="12. Children’s privacy">
             <p>
-              Our services are intended for users aged 18 or above. We do
-              not knowingly collect personal data from anyone under 18. If
-              you believe a child has submitted information to us, contact{' '}
+              Our services are intended for users aged 18 or above. We do not
+              knowingly collect personal data from anyone under 18. If you
+              believe a child has submitted information to us, contact{' '}
               <a
                 href={`mailto:${SITE_CONFIG.email}`}
                 className="text-gold underline-offset-4 hover:underline"
@@ -492,29 +481,26 @@ export default function PrivacyPage(): JSX.Element {
 
           <Section id="breach" title="13. Data-breach notification">
             <p>
-              In the unlikely event of a personal-data breach that is
-              likely to result in a risk to your rights and freedoms, we
-              will notify the UAE Data Office (and any other relevant
-              regulator) within 72 hours of becoming aware of it, and we
-              will notify affected users without undue delay through email
-              or a prominent notice on this site.
+              In the unlikely event of a personal-data breach that is likely to
+              result in a risk to your rights and freedoms, we will notify the
+              UAE Data Office (and any other relevant regulator) within 72 hours
+              of becoming aware of it, and we will notify affected users without
+              undue delay through email or a prominent notice on this site.
             </p>
           </Section>
 
           <Section id="changes" title="14. Changes to this policy">
             <p>
-              We may update this policy as our services or laws evolve.
-              Material changes will be flagged at the top of this page with
-              a new “Last updated” date, and — for significant changes —
-              we’ll notify newsletter subscribers by email at least 14 days
-              before they take effect.
+              We may update this policy as our services or laws evolve. Material
+              changes will be flagged at the top of this page with a new “Last
+              updated” date, and — for significant changes — we’ll notify
+              newsletter subscribers by email at least 14 days before they take
+              effect.
             </p>
           </Section>
 
           <Section id="contact" title="15. Contact us">
-            <p>
-              For any privacy-related question, request, or complaint:
-            </p>
+            <p>For any privacy-related question, request, or complaint:</p>
             <ul className="ml-5 list-disc space-y-2">
               <li>
                 <strong className="text-white">Email:</strong>{' '}
@@ -530,22 +516,21 @@ export default function PrivacyPage(): JSX.Element {
                 {SITE_CONFIG.phone}
               </li>
               <li>
-                <strong className="text-white">Post:</strong>{' '}
-                {SITE_CONFIG.name} for Marketing &amp; Technology,{' '}
-                {SITE_CONFIG.address}
+                <strong className="text-white">Post:</strong> {SITE_CONFIG.name}{' '}
+                for Marketing &amp; Technology, {SITE_CONFIG.address}
               </li>
             </ul>
             <p className="mt-4 border-l-2 border-gold/40 pl-4 text-white/75">
-              We aim to acknowledge privacy requests within 5 working days
-              and resolve them within 30 days.
+              We aim to acknowledge privacy requests within 5 working days and
+              resolve them within 30 days.
             </p>
           </Section>
         </div>
 
         <div className="mt-20 flex flex-col items-center justify-between gap-4 border-t border-gold/15 pt-8 md:flex-row">
           <p className="font-inter text-xs text-white/40">
-            © 2026 {SITE_CONFIG.name} for Marketing &amp; Technology. All
-            rights reserved.
+            © 2026 {SITE_CONFIG.name} for Marketing &amp; Technology. All rights
+            reserved.
           </p>
           <div className="flex gap-4 font-inter text-xs text-white/50">
             <Link href="/terms" className="hover:text-gold">

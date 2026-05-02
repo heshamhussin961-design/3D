@@ -49,8 +49,8 @@ export default function NotFound(): JSX.Element {
           IN SPACE
         </p>
         <p className="max-w-md font-inter text-base text-white/60">
-          The signal you’re looking for never reached us. Drift back to base
-          and we’ll plot another course.
+          The signal you’re looking for never reached us. Drift back to base and
+          we’ll plot another course.
         </p>
 
         <Link href="/" className="inline-block">

@@ -30,8 +30,9 @@ export function RocketLaunch(): JSX.Element {
   useGSAP(
     () => {
       const headlineLetters =
-        headlineRef.current?.querySelectorAll<HTMLSpanElement>('[data-letter]') ??
-        [];
+        headlineRef.current?.querySelectorAll<HTMLSpanElement>(
+          '[data-letter]',
+        ) ?? [];
 
       gsap.set(headlineLetters, { opacity: 0, y: 40, rotateX: -45 });
       gsap.set(sublineRef.current, { opacity: 0, y: 20 });

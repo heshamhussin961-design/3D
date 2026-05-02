@@ -1,12 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import {
-  ArrowRight,
-  Compass,
-  Layers,
-  Sparkles,
-  Telescope,
-} from 'lucide-react';
+import { ArrowRight, Compass, Layers, Sparkles, Telescope } from 'lucide-react';
 
 import { MagneticButton } from '@/components/ui/MagneticButton';
 import { TeamGrid } from '@/components/ui/TeamGrid';
@@ -15,7 +9,7 @@ import { SITE_CONFIG } from '@/lib/constants';
 export const metadata: Metadata = {
   title: 'About',
   description:
-    'A small studio in Abu Dhabi pairing brand strategy, design, and AI to launch ambitious products into category-defining brands.',
+    'A studio in Abu Dhabi pairing brand strategy, design, and AI to launch ambitious products into category-defining brands.',
   alternates: { canonical: `${SITE_CONFIG.url}/about` },
   openGraph: {
     title: `About — ${SITE_CONFIG.name}`,
@@ -45,7 +39,7 @@ const VALUES = [
   {
     icon: Compass,
     title: 'Stay accountable',
-    body: 'We share what we measure. Every engagement has a small set of metrics we agree on at kickoff and report on monthly.',
+    body: 'We share what we measure. Every engagement has a focused set of metrics we agree on at kickoff and report on monthly.',
   },
 ];
 
@@ -55,7 +49,7 @@ interface TeamMember {
   initials: string;
   name: string;
   role: string;
-  bio: string;
+  bio?: string;
   /** Optional photo path. If unset, the initials block is shown. */
   photo?: string;
 }
@@ -66,7 +60,6 @@ const TEAM: TeamMember[] = [
     initials: 'MN',
     name: 'Mohamed Al Natsheh',
     role: 'Founder',
-    bio: 'Steering the studio. Strategy, partnerships, and the long arc of every brand we touch.',
     photo: '/team/mohamed.jpeg',
   },
   {
@@ -74,7 +67,6 @@ const TEAM: TeamMember[] = [
     initials: 'MG',
     name: 'Magdy',
     role: 'Graphic Designer',
-    bio: 'Visual identity, art direction, and the craft that makes our work look unmistakable.',
     photo: '/team/magdi.jpeg',
   },
   {
@@ -82,15 +74,13 @@ const TEAM: TeamMember[] = [
     initials: 'HE',
     name: 'Hussein',
     role: 'Full-Stack Developer & AI Specialist',
-    bio: 'Builds the engineering and AI layer behind every Innova Stars product — from web platforms to intelligent automation.',
     photo: '/team/hussein.jpeg',
   },
   {
     id: 'taghreed',
     initials: 'TG',
     name: 'Taghreed',
-    role: 'Brand Voice & Strategy',
-    bio: 'Shapes the words, the tagline, and the way every Innova Stars story reaches its audience.',
+    role: 'Marketing Manager',
     photo: '/team/Taghreed.jpeg',
   },
 ];
@@ -104,7 +94,7 @@ export default function AboutPage(): JSX.Element {
           ABOUT · 07
         </p>
         <h1 className="mt-6 font-orbitron text-4xl font-bold leading-[1.05] text-white md:text-[72px]">
-          A small studio with{' '}
+          A studio with{' '}
           <span className="text-gradient-gold">large ambition.</span>
         </h1>
         <p className="mt-6 max-w-3xl font-inter text-lg text-white/70 md:text-xl">
@@ -121,15 +111,14 @@ export default function AboutPage(): JSX.Element {
         </h2>
         <div className="md:col-span-2">
           <p className="font-orbitron text-2xl font-medium leading-snug text-white md:text-3xl">
-            To make ambitious work the default — and turn small studios into
+            To make ambitious work the default — and turn focused studios into
             unfair advantages for the brands that hire them.
           </p>
           <p className="mt-6 font-inter text-base leading-relaxed text-white/65">
             Most marketing is a tax on the work. We try to make it the work.
-            That means starting with strategy, building the smallest brand
-            system that holds, and pairing it with the right tooling — AI
-            included, where it actually helps — so the result outlives the
-            campaign.
+            That means starting with strategy, building the leanest brand system
+            that holds, and pairing it with the right tooling — AI included,
+            where it actually helps — so the result outlives the campaign.
           </p>
         </div>
       </section>
@@ -166,12 +155,12 @@ export default function AboutPage(): JSX.Element {
           The team
         </p>
         <h2 className="mt-4 font-orbitron text-3xl font-bold text-white md:text-5xl">
-          Small by design.
+          Innova Stars Experts
         </h2>
         <p className="mt-4 max-w-2xl font-inter text-base text-white/60">
-          A small senior team doing the work directly. No layered handoffs,
-          no juniors put on your retainer. We scale up only when a project
-          genuinely calls for it.
+          A team of specialists handling every project end-to-end — from
+          strategy and brand to development and AI. The people you see on this
+          page are the people you’ll work with directly.
         </p>
 
         <TeamGrid members={TEAM} />
@@ -189,8 +178,8 @@ export default function AboutPage(): JSX.Element {
           We hire rarely. When we do, we hire well.
         </h2>
         <p className="mt-4 font-inter text-base text-white/60">
-          Senior strategists, designers, and ML engineers in the GCC region
-          are always welcome to send their work.
+          Senior strategists, designers, and ML engineers in the GCC region are
+          always welcome to send their work.
         </p>
         <Link
           href="/careers"

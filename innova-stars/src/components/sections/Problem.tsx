@@ -132,9 +132,8 @@ export function Problem(): JSX.Element {
 
       // Phase 2 (0.2 → 0.7): badges fall one after another.
       const badges = Array.from(
-        sectionRef.current?.querySelectorAll<HTMLDivElement>(
-          '[data-badge]',
-        ) ?? [],
+        sectionRef.current?.querySelectorAll<HTMLDivElement>('[data-badge]') ??
+          [],
       );
       badges.forEach((badge, i) => {
         const enter = 0.18 + i * 0.04;

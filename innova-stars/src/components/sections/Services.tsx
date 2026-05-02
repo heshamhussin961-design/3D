@@ -3,6 +3,7 @@
 import { useGSAP } from '@gsap/react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import Link from 'next/link';
 import { useEffect, useRef, useState } from 'react';
 
 import { ConstellationMap } from '@/components/ui/ConstellationMap';
@@ -109,13 +110,13 @@ export function Services(): JSX.Element {
           data-reveal
           className="mt-4 font-orbitron text-4xl font-bold text-white md:text-[56px]"
         >
-          Our Constellation
+          Our Services
         </h2>
         <p
           data-reveal
           className="mt-4 font-inter text-base text-white/60 md:text-lg"
         >
-          A constellation of services guiding your brand to success
+          A consultation of services guiding your brand to success
         </p>
       </div>
 
@@ -123,14 +124,16 @@ export function Services(): JSX.Element {
         {isDesktop ? (
           <ConstellationMap />
         ) : (
-          <div
-            ref={gridRef}
-            className="grid grid-cols-1 gap-5 md:grid-cols-2"
-          >
+          <div ref={gridRef} className="grid grid-cols-1 gap-5 md:grid-cols-2">
             {GRID_SERVICES.map((service) => (
-              <div key={service.id} data-grid-card>
+              <Link
+                key={service.id}
+                href={`/services/${service.id}`}
+                data-grid-card
+                className="block"
+              >
                 <ServiceCard service={service} variant="grid" />
-              </div>
+              </Link>
             ))}
           </div>
         )}

@@ -1,31 +1,16 @@
-import { cn } from '@/lib/utils/cn';
-
 interface SectionNumberProps {
-  /** Two-digit section index e.g. `'01'`. Renders verbatim. */
-  number: string;
+  /** Two-digit section index e.g. `'01'`. Kept on the prop type so callers
+   * don't break, but no longer rendered. */
+  number?: string;
   className?: string;
 }
 
 /**
- * Small monospace-feel index used to label major sections, e.g. `01 / 05`.
- * Sits inline with the section's eyebrow label or anchored to a corner.
+ * Disabled. Was a small "03 / 05" eyebrow next to each section's label;
+ * removed at design's request to clean up the chrome.
  */
-export function SectionNumber({
-  number,
-  className,
-}: SectionNumberProps): JSX.Element {
-  return (
-    <span
-      aria-hidden="true"
-      className={cn(
-        'inline-flex items-center gap-2 font-orbitron text-[11px] font-medium tracking-[0.3em] text-gold/70',
-        className,
-      )}
-    >
-      <span className="text-gold">{number}</span>
-      <span className="text-gold/40">/ 05</span>
-    </span>
-  );
+export function SectionNumber({}: SectionNumberProps): null {
+  return null;
 }
 
 export default SectionNumber;

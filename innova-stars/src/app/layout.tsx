@@ -8,10 +8,11 @@ import { LenisProvider } from '@/components/providers/LenisProvider';
 import { StructuredData } from '@/components/providers/StructuredData';
 import { BackToTop } from '@/components/ui/BackToTop';
 import { CookieBanner } from '@/components/ui/CookieBanner';
+import { FrameBackdrop } from '@/components/ui/FrameBackdrop';
 import { Footer } from '@/components/ui/Footer';
+import { HashScroller } from '@/components/ui/HashScroller';
 import { Navigation } from '@/components/ui/Navigation';
 import { ScrollProgress } from '@/components/ui/ScrollProgress';
-import { VideoBackdrop } from '@/components/ui/VideoBackdrop';
 import { WhatsAppFab } from '@/components/ui/WhatsAppFab';
 import { SITE_CONFIG } from '@/lib/constants';
 import './globals.css';
@@ -93,13 +94,14 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${orbitron.variable} ${inter.variable}`}>
       <head>
-        {/* Poster for the Services backdrop — keeps the section legible while
-            the looping Innova video streams in. */}
+        {/* Preload the first frame of the rocket sequence so the hero
+            paints fast while the rest of the frames stream in. */}
         <link
           rel="preload"
           as="image"
-          href="/frames/services/frame_0180.webp"
+          href="/frames/innova/frame_0001.webp"
           type="image/webp"
+          fetchPriority="high"
         />
       </head>
       <body className="bg-black text-white antialiased">
@@ -110,9 +112,14 @@ export default function RootLayout({
           Skip to main content
         </a>
         <StructuredData />
-        <VideoBackdrop src="/videos/innova-scrub.mp4" />
+        <FrameBackdrop
+          basePath="/frames/innova/"
+          mobileBasePath="/frames/innova-mobile/"
+          frameCount={290}
+        />
         <Suspense fallback={null}>
           <LenisProvider>
+            <HashScroller />
             <ScrollProgress />
             <Navigation />
             <div className="relative z-10">

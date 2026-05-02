@@ -18,7 +18,15 @@ interface SocialEntry {
 // Lucide v1 dropped brand icons, so these are hand-written.
 function InstagramIcon(props: SVGProps<SVGSVGElement>): JSX.Element {
   return (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" {...props}>
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.8"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      {...props}
+    >
       <rect x="3" y="3" width="18" height="18" rx="5" />
       <circle cx="12" cy="12" r="4" />
       <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none" />
@@ -60,7 +68,11 @@ function WhatsAppIcon(props: SVGProps<SVGSVGElement>): JSX.Element {
 
 const ENTRIES: SocialEntry[] = [
   { label: 'WhatsApp', href: SITE_CONFIG.social.whatsapp, Icon: WhatsAppIcon },
-  { label: 'Instagram', href: SITE_CONFIG.social.instagram, Icon: InstagramIcon },
+  {
+    label: 'Instagram',
+    href: SITE_CONFIG.social.instagram,
+    Icon: InstagramIcon,
+  },
   { label: 'LinkedIn', href: SITE_CONFIG.social.linkedin, Icon: LinkedInIcon },
   { label: 'Facebook', href: SITE_CONFIG.social.facebook, Icon: FacebookIcon },
   { label: 'TikTok', href: SITE_CONFIG.social.tiktok, Icon: TikTokIcon },

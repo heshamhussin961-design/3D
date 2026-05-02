@@ -264,6 +264,7 @@ export function ConstellationMap(): JSX.Element {
               transform: `translate(-50%, -50%) scale(${activeId === service.id ? 1.4 : 1})`,
             }}
             onMouseEnter={(e) => handleEnter(service, e.currentTarget)}
+            onMouseLeave={handleLeave}
             onFocus={(e) => handleEnter(service, e.currentTarget)}
             onBlur={handleLeave}
           >
@@ -287,10 +288,7 @@ export function ConstellationMap(): JSX.Element {
                   : 'h-10 w-10 shadow-[0_0_20px_rgba(212,175,55,0.7)]',
               )}
             >
-              <Icon
-                className={hub ? 'h-7 w-7' : 'h-4 w-4'}
-                strokeWidth={2.2}
-              />
+              <Icon className={hub ? 'h-7 w-7' : 'h-4 w-4'} strokeWidth={2.2} />
             </span>
           </button>
         );

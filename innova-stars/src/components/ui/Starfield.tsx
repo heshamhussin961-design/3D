@@ -71,7 +71,10 @@ function pickColor(rng: () => number, isBright: boolean): string {
   return isBright ? COLOR_GOLD : COLOR_WHITE;
 }
 
-function pickRadius(rng: () => number): { radius: number; tier: 'tiny' | 'small' | 'bright' } {
+function pickRadius(rng: () => number): {
+  radius: number;
+  tier: 'tiny' | 'small' | 'bright';
+} {
   const r = rng();
   if (r < 0.7) return { radius: 0.5 + rng() * 0.5, tier: 'tiny' };
   if (r < 0.95) return { radius: 1 + rng() * 0.5, tier: 'small' };
@@ -364,7 +367,10 @@ export function Starfield({
           }
 
           const trail = Math.hypot(star.x - star.prevX, star.y - star.prevY);
-          const opacity = Math.min(1, star.baseOpacity + star.z * progress * 0.6);
+          const opacity = Math.min(
+            1,
+            star.baseOpacity + star.z * progress * 0.6,
+          );
           if (trail > 1.2) {
             ctx.strokeStyle = `rgba(${star.rgb}, ${opacity})`;
             ctx.lineWidth = star.radius * (1 + star.z);

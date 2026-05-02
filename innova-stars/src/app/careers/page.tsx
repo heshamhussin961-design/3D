@@ -41,9 +41,9 @@ export default function CareersPage(): JSX.Element {
           <span className="text-gradient-gold">Innova Stars</span>.
         </h1>
         <p className="mt-6 max-w-3xl font-inter text-lg text-white/70 md:text-xl">
-          We hire rarely and we hire well. Senior strategists, designers, and
-          ML engineers in the GCC region are always welcome to send their
-          work — even when no role is open.
+          We hire rarely and we hire well. Senior strategists, designers, and ML
+          engineers in the GCC region are always welcome to send their work —
+          even when no role is open.
         </p>
       </section>
 
@@ -58,8 +58,8 @@ export default function CareersPage(): JSX.Element {
               No open roles right now.
             </p>
             <p className="mt-3 font-inter text-base text-white/60">
-              We open positions in waves. Send us your work and we’ll keep
-              your file when the next wave starts.
+              We open positions in waves. Send us your work and we’ll keep your
+              file when the next wave starts.
             </p>
             <a
               href={`mailto:${SITE_CONFIG.email}?subject=Careers — sending my work`}

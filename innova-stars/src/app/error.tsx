@@ -30,8 +30,8 @@ export default function GlobalError({ error, reset }: ErrorProps): JSX.Element {
           Something <span className="text-gradient-gold">went wrong</span>.
         </h1>
         <p className="mt-6 font-inter text-base text-white/70 md:text-lg">
-          Our flight computer hit an unexpected error. Please try again — and
-          if it keeps happening, drop us a line.
+          Our flight computer hit an unexpected error. Please try again — and if
+          it keeps happening, drop us a line.
         </p>
         {error.digest ? (
           <p className="mt-3 font-mono text-[11px] text-white/30">

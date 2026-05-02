@@ -12,3 +12,8 @@ ui-ux-pro-max-skill/
 # Source media — encoded/optimized versions live in innova-stars/public/videos/
 /Innova.mp4
 /Cinematic_Rocket_Launch_Video_Generation.mp4
+
+# Deploy artifacts (built locally, uploaded to host — not source)
+deploy*.zip
+out/
+build/

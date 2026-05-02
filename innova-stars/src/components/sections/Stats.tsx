@@ -73,7 +73,10 @@ export function Stats(): JSX.Element {
       />
       <ParticleField count={30} />
 
-      <div ref={headerRef} className="relative z-10 mx-auto max-w-2xl text-center">
+      <div
+        ref={headerRef}
+        className="relative z-10 mx-auto max-w-2xl text-center"
+      >
         <div data-reveal className="flex items-center justify-center gap-3">
           <SectionNumber number="04" />
           <span aria-hidden="true" className="h-px w-8 bg-gold/30" />

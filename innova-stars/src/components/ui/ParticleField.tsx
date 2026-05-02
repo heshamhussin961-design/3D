@@ -59,7 +59,9 @@ export function ParticleField({
     function makeParticle(startAtRandomY: boolean): Particle {
       return {
         x: Math.random() * width,
-        y: startAtRandomY ? Math.random() * height : height + Math.random() * 60,
+        y: startAtRandomY
+          ? Math.random() * height
+          : height + Math.random() * 60,
         radius: 1 + Math.random() * 2,
         speed: 10 + Math.random() * 25, // px/s
         opacity: 0.2 + Math.random() * 0.4,
@@ -121,7 +123,9 @@ export function ParticleField({
     <canvas
       ref={canvasRef}
       aria-hidden="true"
-      className={className ?? 'pointer-events-none absolute inset-0 h-full w-full'}
+      className={
+        className ?? 'pointer-events-none absolute inset-0 h-full w-full'
+      }
     />
   );
 }

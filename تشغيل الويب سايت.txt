@@ -1,30 +1,46 @@
-أوامر تشغيل الويب سايت
-أول مرة (لو ما عندكش الـdependencies)
+🚀 دليلك الشامل لتشغيل الويب سايت 🚀
+====================================
 
+📂 في البداية، دايماً اتأكد إنك جوة فولدر المشروع:
 cd "f:\cyber tools\3D\innova-stars"
+
+--------------------------------------------------
+
+1️⃣ أول مرة تشغل المشروع؟ (تنزيل الملفات الأساسية)
+لو لسه منزل المشروع أو في بكدجات (Dependencies) ناقصة، اكتب الأمر ده:
 npm install --legacy-peer-deps
-التشغيل العادي (development)
 
-cd "f:\cyber tools\3D\innova-stars"
+--------------------------------------------------
+
+2️⃣ التشغيل العادي أثناء التطوير (Development Mode)
+عشان تشغل السيرفر وتشوف تعديلاتك لايف:
 npm run dev
-ثم افتح: http://localhost:3000 (لابتوب) أو http://192.168.1.235:3000 (موبايل على نفس WiFi)
 
-Production build + تشغيل
+🌐 بعد ما يشتغل، تقدر تفتح الموقع من:
+- على اللابتوب: http://localhost:3000
+- على الموبايل (نفس شبكة الواي فاي): http://192.168.1.235:3000
 
-cd "f:\cyber tools\3D\innova-stars"
+--------------------------------------------------
+
+3️⃣ تجهيز الموقع للنسخة النهائية (Production Mode)
+لو عايز تتأكد من سرعة الموقع وتجربه كأنه لايف:
 npm run build
 npm start
-فحوصات قبل ما تـcommit
 
-cd "f:\cyber tools\3D\innova-stars"
-npm run typecheck   # TypeScript
-npm run lint        # ESLint
-npm run format      # Prettier auto-fix
-npm run format:check # Prettier check only
-إيقاف السيرفر
-في الـterminal اللي شغّال فيه السيرفر، اضغط Ctrl+C.
+--------------------------------------------------
 
-لو فيه instances زومبي على بورتات (3000, 3001…)، اقفلهم من PowerShell:
+4️⃣ فحوصات مهمة قبل ما ترفع الكود (Before Commit)
+عشان تتأكد إن الكود سليم ومافيهوش أخطاء:
+npm run typecheck     # فحص أخطاء الـ TypeScript
+npm run lint          # فحص جودة الكود (ESLint)
+npm run format        # تظبيط شكل الكود أوتوماتيك (Prettier)
+npm run format:check  # التأكد بس من إن الكود متظبط
 
+--------------------------------------------------
 
+🛑 إزاي توقف السيرفر؟
+- في نفس الشاشة (Terminal) اللي شغال فيها، اضغط على: Ctrl + C
+
+🧹 لو السيرفر معلق ومش راضي يشتغل (بورت 3000 مشغول):
+افتح الـ PowerShell واكتب الأمر ده عشان تقفل أي سيرفر Node شغال في الخلفية:
 Get-Process node -ErrorAction SilentlyContinue | Stop-Process -Force

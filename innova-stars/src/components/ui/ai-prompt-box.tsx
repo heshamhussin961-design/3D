@@ -58,8 +58,7 @@ function useInjectStyles(): void {
 
 // Textarea (local — named `AiPromptTextarea` to avoid clashing with the
 // existing project-level Textarea component).
-interface AiPromptTextareaProps
-  extends React.TextareaHTMLAttributes<HTMLTextAreaElement> {
+interface AiPromptTextareaProps extends React.TextareaHTMLAttributes<HTMLTextAreaElement> {
   className?: string;
 }
 const AiPromptTextarea = React.forwardRef<
@@ -107,10 +106,7 @@ const DialogOverlay = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <DialogPrimitive.Overlay
     ref={ref}
-    className={cn(
-      'fixed inset-0 z-50 bg-black/60 backdrop-blur-sm',
-      className,
-    )}
+    className={cn('fixed inset-0 z-50 bg-black/60 backdrop-blur-sm', className)}
     {...props}
   />
 ));
@@ -238,7 +234,9 @@ const VoiceRecorder: React.FC<VoiceRecorderProps> = ({
     >
       <div className="mb-3 flex items-center gap-2">
         <div className="h-2 w-2 animate-pulse rounded-full bg-red-500" />
-        <span className="font-mono text-sm text-white/80">{formatTime(time)}</span>
+        <span className="font-mono text-sm text-white/80">
+          {formatTime(time)}
+        </span>
       </div>
       <div className="flex h-10 w-full items-center justify-center gap-0.5 px-4">
         {Array.from({ length: visualizerBars }).map((_, i) => (
@@ -406,9 +404,7 @@ const PromptInputTextarea: React.FC<
         : `min(${textareaRef.current.scrollHeight}px, ${maxHeight})`;
   }, [value, maxHeight, disableAutosize]);
 
-  const handleKeyDown = (
-    e: React.KeyboardEvent<HTMLTextAreaElement>,
-  ): void => {
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>): void => {
     if (e.key === 'Enter' && !e.shiftKey) {
       e.preventDefault();
       onSubmit?.();
@@ -441,8 +437,7 @@ const PromptInputActions: React.FC<PromptInputActionsProps> = ({
   </div>
 );
 
-interface PromptInputActionProps
-  extends React.ComponentProps<typeof Tooltip> {
+interface PromptInputActionProps extends React.ComponentProps<typeof Tooltip> {
   tooltip: React.ReactNode;
   children: React.ReactNode;
   side?: 'top' | 'bottom' | 'left' | 'right';

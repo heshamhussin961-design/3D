@@ -7,14 +7,14 @@ import { ArrowRight } from 'lucide-react';
 import { useRef } from 'react';
 
 import { MagneticButton } from '@/components/ui/MagneticButton';
-import { MagneticWordmark } from '@/components/ui/MagneticWordmark';
 import { ScrollIndicator } from '@/components/ui/ScrollIndicator';
 
 if (typeof window !== 'undefined') {
   gsap.registerPlugin(ScrollTrigger);
 }
 
-const TAGLINE = 'LEAD YOUR BUSINESS TO THE STARS';
+const TAGLINE_LINE_1 = 'LEAD YOUR BUSINESS';
+const TAGLINE_LINE_2 = 'TO THE STARS';
 
 function splitLetters(text: string): { char: string; key: string }[] {
   return Array.from(text).map((char, index) => ({
@@ -40,17 +40,20 @@ export function Hero(): JSX.Element {
   const contentRef = useRef<HTMLDivElement | null>(null);
   const logoRef = useRef<HTMLDivElement | null>(null);
   const taglineRef = useRef<HTMLHeadingElement | null>(null);
-  const subtitleRef = useRef<HTMLParagraphElement | null>(null);
 
   useGSAP(
     () => {
-      gsap.set(logoRef.current, { opacity: 0, scale: 0.8, filter: 'blur(10px)' });
-      gsap.set(subtitleRef.current, { opacity: 0, y: 20 });
+      gsap.set(logoRef.current, {
+        opacity: 0,
+        scale: 0.8,
+        filter: 'blur(10px)',
+      });
       gsap.set('[data-cta]', { opacity: 0, y: 20 });
 
       const taglineLetters =
-        taglineRef.current?.querySelectorAll<HTMLSpanElement>('[data-letter]') ??
-        [];
+        taglineRef.current?.querySelectorAll<HTMLSpanElement>(
+          '[data-letter]',
+        ) ?? [];
       gsap.set(taglineLetters, { opacity: 0, y: 30 });
 
       const intro = gsap.timeline();
@@ -73,14 +76,9 @@ export function Hero(): JSX.Element {
         0.8,
       );
       intro.to(
-        subtitleRef.current,
-        { opacity: 1, y: 0, duration: 0.8, ease: 'power2.out' },
-        1.8,
-      );
-      intro.to(
         '[data-cta]',
         { opacity: 1, y: 0, duration: 0.6, ease: 'power2.out' },
-        2.2,
+        1.8,
       );
 
       // Scroll-linked: content fades, lifts and blurs as the user scrolls
@@ -105,7 +103,8 @@ export function Hero(): JSX.Element {
     { scope: sectionRef },
   );
 
-  const tagline = splitLetters(TAGLINE);
+  const tagline1 = splitLetters(TAGLINE_LINE_1);
+  const tagline2 = splitLetters(TAGLINE_LINE_2);
 
   return (
     <section
@@ -118,45 +117,49 @@ export function Hero(): JSX.Element {
         ref={contentRef}
         className="relative z-10 flex h-full flex-col items-center justify-center px-6 text-center will-change-[transform,opacity,filter]"
       >
-        <div className="mx-auto flex max-w-[1200px] flex-col items-center">
-          <div
-            ref={logoRef}
-            className="font-orbitron text-[28px] font-black tracking-[0.05em] text-gold gold-glow sm:text-[36px] md:text-[64px]"
-          >
-            <MagneticWordmark
-              text="INNOVA STARS"
-              strength={14}
-              radius={180}
-            />
-          </div>
+        <div
+          ref={logoRef}
+          className="mx-auto flex max-w-[1200px] flex-col items-center"
+        >
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/logo.png"
+            alt="Innova Stars"
+            className="h-32 w-auto md:h-48 lg:h-56"
+            style={{
+              filter:
+                'drop-shadow(0 0 30px rgba(212,175,55,0.55)) drop-shadow(0 0 60px rgba(212,175,55,0.25))',
+            }}
+          />
 
           <h1
             ref={taglineRef}
-            className="mt-5 font-orbitron text-[26px] font-bold leading-tight tracking-[0.08em] text-white sm:text-[32px] sm:tracking-[0.1em] md:mt-10 md:text-[72px]"
+            className="mt-6 font-orbitron text-[26px] font-bold leading-[1.05] tracking-[0.08em] text-white sm:text-[32px] sm:tracking-[0.1em] md:mt-10 md:text-[72px]"
             style={{ textShadow: '0 0 30px rgba(212, 175, 55, 0.25)' }}
           >
-            {tagline.map((letter) => (
-              <span
-                key={letter.key}
-                data-letter
-                className="inline-block whitespace-pre"
-              >
-                {letter.char === ' ' ? ' ' : letter.char}
-              </span>
-            ))}
-          </h1>
-
-          <p
-            ref={subtitleRef}
-            className="mt-5 font-inter text-sm text-white/75 sm:text-base md:text-xl"
-            style={{ textShadow: '0 0 16px rgba(0,0,0,0.6)' }}
-          >
-            <span className="font-orbitron tracking-[0.18em] text-gold">
-              INNOVA STARS
+            <span className="block">
+              {tagline1.map((letter) => (
+                <span
+                  key={letter.key}
+                  data-letter
+                  className="inline-block whitespace-pre"
+                >
+                  {letter.char === ' ' ? ' ' : letter.char}
+                </span>
+              ))}
             </span>
-            <span className="mx-2 text-white/40">—</span>
-            Innovation meets imagination
-          </p>
+            <span className="mt-2 block md:mt-4">
+              {tagline2.map((letter) => (
+                <span
+                  key={letter.key}
+                  data-letter
+                  className="inline-block whitespace-pre"
+                >
+                  {letter.char === ' ' ? ' ' : letter.char}
+                </span>
+              ))}
+            </span>
+          </h1>
 
           <div data-cta className="mt-10 md:mt-12">
             <MagneticButton

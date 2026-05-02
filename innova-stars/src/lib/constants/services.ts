@@ -147,13 +147,12 @@ export const SERVICES: Service[] = [
   },
 ];
 
-export const SERVICES_BY_ID: Readonly<Record<string, Service>> =
-  Object.freeze(
-    SERVICES.reduce<Record<string, Service>>((acc, s) => {
-      acc[s.id] = s;
-      return acc;
-    }, {}),
-  );
+export const SERVICES_BY_ID: Readonly<Record<string, Service>> = Object.freeze(
+  SERVICES.reduce<Record<string, Service>>((acc, s) => {
+    acc[s.id] = s;
+    return acc;
+  }, {}),
+);
 
 interface ConnectionEdge {
   fromId: string;

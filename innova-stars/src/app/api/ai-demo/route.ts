@@ -31,7 +31,10 @@ export async function POST(request: Request): Promise<NextResponse> {
   try {
     body = (await request.json()) as AiDemoPayload;
   } catch {
-    return NextResponse.json({ ok: false, error: 'Invalid JSON' }, { status: 400 });
+    return NextResponse.json(
+      { ok: false, error: 'Invalid JSON' },
+      { status: 400 },
+    );
   }
 
   const message = body.message?.trim() ?? '';

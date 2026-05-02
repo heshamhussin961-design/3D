@@ -19,7 +19,8 @@ const ContactModal = dynamic(
   { ssr: false },
 );
 
-const HEADLINE = 'Ready to reach the stars?';
+const HEADLINE_LINE_1 = 'Ready to reach';
+const HEADLINE_LINE_2 = 'the stars?';
 
 function splitLetters(text: string): { char: string; key: string }[] {
   return Array.from(text).map((char, i) => ({ char, key: `${char}-${i}` }));
@@ -43,8 +44,9 @@ export function CTA(): JSX.Element {
       if (!section) return;
 
       const letters =
-        headlineRef.current?.querySelectorAll<HTMLSpanElement>('[data-letter]') ??
-        [];
+        headlineRef.current?.querySelectorAll<HTMLSpanElement>(
+          '[data-letter]',
+        ) ?? [];
 
       gsap.set(letters, { opacity: 0, y: 30 });
       gsap.set(contentRef.current?.querySelectorAll('[data-reveal]') ?? [], {
@@ -78,12 +80,12 @@ export function CTA(): JSX.Element {
         },
         '-=0.3',
       );
-
     },
     { scope: sectionRef },
   );
 
-  const letters = splitLetters(HEADLINE);
+  const lettersLine1 = splitLetters(HEADLINE_LINE_1);
+  const lettersLine2 = splitLetters(HEADLINE_LINE_2);
 
   return (
     <section
@@ -110,17 +112,30 @@ export function CTA(): JSX.Element {
 
         <h2
           ref={headlineRef}
-          className="mt-6 font-orbitron text-[28px] font-bold leading-tight sm:text-[36px] md:text-[64px] lg:text-[80px]"
+          className="mt-6 font-orbitron text-[28px] font-bold leading-[1.05] sm:text-[36px] md:text-[64px] lg:text-[80px]"
         >
-          {letters.map((letter) => (
-            <span
-              key={letter.key}
-              data-letter
-              className="inline-block whitespace-pre text-gradient-gold"
-            >
-              {letter.char}
-            </span>
-          ))}
+          <span className="block">
+            {lettersLine1.map((letter) => (
+              <span
+                key={letter.key}
+                data-letter
+                className="inline-block whitespace-pre text-gradient-gold"
+              >
+                {letter.char}
+              </span>
+            ))}
+          </span>
+          <span className="mt-2 block md:mt-4">
+            {lettersLine2.map((letter) => (
+              <span
+                key={letter.key}
+                data-letter
+                className="inline-block whitespace-pre text-gradient-gold"
+              >
+                {letter.char}
+              </span>
+            ))}
+          </span>
         </h2>
 
         <p

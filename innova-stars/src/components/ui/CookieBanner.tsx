@@ -50,9 +50,9 @@ export function CookieBanner(): JSX.Element | null {
                 We use minimal cookies
               </p>
               <p className="mt-2 font-inter text-sm leading-relaxed text-white/75">
-                Essential cookies keep the site running, and anonymous
-                analytics help us understand what works. No advertising or
-                cross-site tracking.{' '}
+                Essential cookies keep the site running, and anonymous analytics
+                help us understand what works. No advertising or cross-site
+                tracking.{' '}
                 <Link
                   href="/cookies"
                   className="text-gold underline-offset-4 hover:underline"

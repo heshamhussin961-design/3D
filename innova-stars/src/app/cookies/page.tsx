@@ -44,8 +44,7 @@ export default function CookiesPage(): JSX.Element {
                     is-cookie-consent
                   </td>
                   <td className="py-3 pr-4">
-                    Stores your cookie banner choice so we don’t show it
-                    again.
+                    Stores your cookie banner choice so we don’t show it again.
                   </td>
                   <td className="py-3 pr-4">12 months</td>
                   <td className="py-3 text-white/60">Essential</td>

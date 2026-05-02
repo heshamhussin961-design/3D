@@ -79,12 +79,12 @@ export function ServiceCard({
       </p>
 
       {!isTooltip ? (
-        <a
-          href={`#${service.id}`}
-          className="mt-auto inline-flex items-center gap-1 font-orbitron text-xs uppercase tracking-[0.2em] text-gold transition-opacity duration-200 hover:text-gold-light"
+        <span
+          aria-hidden="true"
+          className="mt-auto inline-flex items-center gap-1 font-orbitron text-xs uppercase tracking-[0.2em] text-gold transition-opacity duration-200 group-hover:text-gold-light"
         >
           Learn more <span aria-hidden="true">→</span>
-        </a>
+        </span>
       ) : (
         <span
           aria-hidden="true"

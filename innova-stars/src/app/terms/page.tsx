@@ -42,8 +42,8 @@ export default function TermsPage(): JSX.Element {
 
           <Section title="3. Intellectual property">
             <p>
-              All content on this site — copy, logos, brand marks, video, code
-              — is owned by {SITE_CONFIG.name} unless otherwise stated. You may
+              All content on this site — copy, logos, brand marks, video, code —
+              is owned by {SITE_CONFIG.name} unless otherwise stated. You may
               not copy, redistribute, or reuse our content without written
               permission.
             </p>
@@ -52,8 +52,8 @@ export default function TermsPage(): JSX.Element {
           <Section title="4. Submissions">
             <p>
               When you submit a contact form, you confirm the information is
-              accurate and that you have the right to share it. We may use
-              your enquiry to respond and follow up; see our{' '}
+              accurate and that you have the right to share it. We may use your
+              enquiry to respond and follow up; see our{' '}
               <a
                 href="/privacy"
                 className="text-gold underline-offset-4 hover:underline"
@@ -74,17 +74,16 @@ export default function TermsPage(): JSX.Element {
 
           <Section title="6. Limitation of liability">
             <p>
-              To the fullest extent allowed by law, {SITE_CONFIG.name} shall
-              not be liable for any indirect, incidental, or consequential
-              damages arising from your use of the site.
+              To the fullest extent allowed by law, {SITE_CONFIG.name} shall not
+              be liable for any indirect, incidental, or consequential damages
+              arising from your use of the site.
             </p>
           </Section>
 
           <Section title="7. Governing law">
             <p>
-              These terms are governed by the laws of the United Arab
-              Emirates. Any disputes will be resolved in the courts of Abu
-              Dhabi.
+              These terms are governed by the laws of the United Arab Emirates.
+              Any disputes will be resolved in the courts of Abu Dhabi.
             </p>
           </Section>
 
