@@ -19,14 +19,16 @@ import './globals.css';
 
 const orbitron = Orbitron({
   subsets: ['latin'],
-  weight: ['400', '500', '600', '700', '900'],
+  // 500 (medium), 700 (bold), 900 (black) cover every weight we
+  // actually use — semibold and regular orbitron were near-duplicates.
+  weight: ['500', '700', '900'],
   variable: '--font-orbitron',
   display: 'swap',
 });
 
 const inter = Inter({
   subsets: ['latin'],
-  weight: ['300', '400', '500', '600'],
+  weight: ['400', '500', '600'],
   variable: '--font-inter',
   display: 'swap',
 });

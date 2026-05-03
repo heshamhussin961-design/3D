@@ -60,28 +60,28 @@ const TEAM: TeamMember[] = [
     initials: 'MN',
     name: 'Mohamed Al Natsheh',
     role: 'Founder',
-    photo: '/team/mohamed.jpeg',
+    photo: '/team/mohamed.webp',
   },
   {
     id: 'magdi',
     initials: 'MG',
     name: 'Magdy',
     role: 'Graphic Designer',
-    photo: '/team/magdi.jpeg',
+    photo: '/team/magdi.webp',
   },
   {
     id: 'hussein',
     initials: 'HE',
     name: 'Hussein',
     role: 'Full-Stack Developer & AI Specialist',
-    photo: '/team/hussein.jpeg',
+    photo: '/team/hussein.webp',
   },
   {
     id: 'taghreed',
     initials: 'TG',
     name: 'Taghreed',
     role: 'Marketing Manager',
-    photo: '/team/Taghreed.jpeg',
+    photo: '/team/taghreed.webp',
   },
 ];
 
