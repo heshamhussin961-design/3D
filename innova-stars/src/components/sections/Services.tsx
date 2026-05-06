@@ -4,7 +4,9 @@ import { useGSAP } from '@gsap/react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Link from 'next/link';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useLayoutEffect, useRef, useState } from 'react';
+
+const useIsomorphicLayoutEffect = typeof window !== 'undefined' ? useLayoutEffect : useEffect;
 
 import { ConstellationMap } from '@/components/ui/ConstellationMap';
 
@@ -34,7 +36,7 @@ export function Services(): JSX.Element {
   const gridRef = useRef<HTMLDivElement | null>(null);
   const [isDesktop, setIsDesktop] = useState<boolean>(true);
 
-  useEffect(() => {
+  useIsomorphicLayoutEffect(() => {
     function check(): void {
       setIsDesktop(window.innerWidth >= DESKTOP_BREAKPOINT);
     }
@@ -48,33 +50,35 @@ export function Services(): JSX.Element {
       const header = headerRef.current;
       if (header) {
         const reveals = header.querySelectorAll('[data-reveal]');
-        gsap.set(reveals, { opacity: 1, y: 0 });
-        gsap.from(reveals, {
-          opacity: 0,
-          y: 30,
+        gsap.set(reveals, { autoAlpha: 0, y: 30 });
+        gsap.to(reveals, {
+          autoAlpha: 1,
+          y: 0,
           duration: 0.8,
           ease: 'power2.out',
           stagger: 0.1,
           scrollTrigger: {
             trigger: header,
-            start: 'top 90%',
-            once: true,
+            start: 'top 85%',
+            toggleActions: 'play none none none',
           },
         });
       }
 
       const grid = gridRef.current;
       if (grid) {
-        gsap.from(grid.querySelectorAll('[data-grid-card]'), {
-          opacity: 0,
-          y: 40,
+        const cards = grid.querySelectorAll('[data-grid-card]');
+        gsap.set(cards, { autoAlpha: 0, y: 40 });
+        gsap.to(cards, {
+          autoAlpha: 1,
+          y: 0,
           duration: 0.7,
           ease: 'power2.out',
           stagger: 0.1,
           scrollTrigger: {
             trigger: grid,
             start: 'top 85%',
-            once: true,
+            toggleActions: 'play none none none',
           },
         });
       }

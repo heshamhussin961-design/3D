@@ -31,22 +31,28 @@ export function Stats(): JSX.Element {
       const header = headerRef.current;
       if (header) {
         const reveals = header.querySelectorAll('[data-reveal]');
-        gsap.set(reveals, { opacity: 1, y: 0 });
-        gsap.from(reveals, {
-          opacity: 0,
-          y: 24,
+        gsap.set(reveals, { autoAlpha: 0, y: 24 });
+        gsap.to(reveals, {
+          autoAlpha: 1,
+          y: 0,
           duration: 0.8,
           ease: 'power2.out',
           stagger: 0.1,
-          scrollTrigger: { trigger: header, start: 'top 90%', once: true },
+          scrollTrigger: {
+            trigger: header,
+            start: 'top 85%',
+            toggleActions: 'play none none none',
+          },
         });
       }
 
       const grid = gridRef.current;
       if (grid) {
-        gsap.from(grid.querySelectorAll('[data-stat]'), {
-          opacity: 0,
-          y: 40,
+        const stats = grid.querySelectorAll('[data-stat]');
+        gsap.set(stats, { autoAlpha: 0, y: 40 });
+        gsap.to(stats, {
+          autoAlpha: 1,
+          y: 0,
           duration: 0.7,
           ease: 'power2.out',
           stagger: 0.15,

@@ -3,7 +3,9 @@
 import { useGSAP } from '@gsap/react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { useEffect, useMemo, useRef, useState } from 'react';
+import { useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
+
+const useIsomorphicLayoutEffect = typeof window !== 'undefined' ? useLayoutEffect : useEffect;
 
 if (typeof window !== 'undefined') {
   gsap.registerPlugin(ScrollTrigger);
@@ -31,7 +33,7 @@ const OLD_MARKETING_MOBILE = [
 ];
 
 const HEADLINE_LINE_1 = 'Traditional marketing';
-const HEADLINE_LINE_2 = 'is dead.';
+const HEADLINE_LINE_2 = 'is dead';
 const RISING = 'It’s time to rise above.';
 
 interface BadgePosition {
@@ -45,16 +47,28 @@ interface BadgePosition {
  * SSR and CSR render identical positions (avoids hydration mismatch) while
  * still looking "scattered".
  */
-function generateBadgePositions(count: number): BadgePosition[] {
+function generateBadgePositions(count: number, mobile: boolean): BadgePosition[] {
   const positions: BadgePosition[] = [];
-  // A handful of hand-tuned seeds that look scattered without overlap.
-  const seeds = [0.14, 0.72, 0.38, 0.91, 0.56, 0.23, 0.08, 0.64];
-  for (let i = 0; i < count; i++) {
-    const s = seeds[i % seeds.length];
-    const left = 8 + ((s * 100 + i * 13) % 80); // 8–88%
-    const top = 10 + ((s * 53 + i * 17) % 45); // 10–55% (upper 60%)
-    const rotation = ((s * 90 + i * 23) % 30) - 15; // -15° to +15°
-    positions.push({ left, top, rotation });
+  if (mobile) {
+    // Grid-like layout for mobile — no overlap
+    const cols = 2;
+    for (let i = 0; i < count; i++) {
+      const col = i % cols;
+      const row = Math.floor(i / cols);
+      const left = 15 + col * 50; // 15% and 65%
+      const top = 5 + row * 12;   // spaced 12% apart vertically
+      const rotation = (i % 2 === 0 ? 1 : -1) * (3 + i);
+      positions.push({ left, top, rotation });
+    }
+  } else {
+    const seeds = [0.14, 0.72, 0.38, 0.91, 0.56, 0.23, 0.08, 0.64];
+    for (let i = 0; i < count; i++) {
+      const s = seeds[i % seeds.length];
+      const left = 8 + ((s * 100 + i * 13) % 80);
+      const top = 10 + ((s * 53 + i * 17) % 45);
+      const rotation = ((s * 90 + i * 23) % 30) - 15;
+      positions.push({ left, top, rotation });
+    }
   }
   return positions;
 }
@@ -80,7 +94,7 @@ export function Problem(): JSX.Element {
   // Always render the desktop list on SSR + first client render so hydration
   // sees identical markup, then collapse to the mobile list after mount.
   const [isMobile, setIsMobile] = useState<boolean>(false);
-  useEffect(() => {
+  useIsomorphicLayoutEffect(() => {
     function check(): void {
       setIsMobile(window.innerWidth < 768);
     }
@@ -91,8 +105,8 @@ export function Problem(): JSX.Element {
   const words = isMobile ? OLD_MARKETING_MOBILE : OLD_MARKETING_DESKTOP;
 
   const positions = useMemo(
-    () => generateBadgePositions(words.length),
-    [words.length],
+    () => generateBadgePositions(words.length, isMobile),
+    [words.length, isMobile],
   );
 
   useGSAP(
@@ -114,15 +128,42 @@ export function Problem(): JSX.Element {
         [];
 
       if (mobile) {
-        // Mobile: no animation, text visible by default
+        // Mobile: simple scroll-triggered reveals (no pin/scrub — more reliable)
+        gsap.set(headlineLetters, { autoAlpha: 0, y: 20 });
+        gsap.set(risingLetters, { autoAlpha: 0, y: 20 });
+        gsap.set(risingRef.current, { autoAlpha: 0 });
+
+        gsap.to(headlineLetters, {
+          autoAlpha: 1, y: 0, duration: 0.6,
+          stagger: { each: 0.02 },
+          scrollTrigger: {
+            trigger: headlineRef.current,
+            start: 'top 85%',
+            toggleActions: 'play none none none',
+          },
+        });
+
+        gsap.to(risingRef.current, { autoAlpha: 1, duration: 0.3,
+          scrollTrigger: {
+            trigger: risingRef.current,
+            start: 'top 85%',
+            toggleActions: 'play none none none',
+          },
+        });
+        gsap.to(risingLetters, {
+          autoAlpha: 1, y: 0, duration: 0.6,
+          stagger: { each: 0.02 },
+          scrollTrigger: {
+            trigger: risingRef.current,
+            start: 'top 85%',
+            toggleActions: 'play none none none',
+          },
+        });
+
         return;
       }
 
       // Desktop: pinned scroll-driven animation
-      gsap.set(headlineLetters, { opacity: 0, y: 40 });
-      gsap.set(risingLetters, { opacity: 0, y: 40 });
-      gsap.set(risingRef.current, { opacity: 0 });
-
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: sectionRef.current,
@@ -137,8 +178,9 @@ export function Problem(): JSX.Element {
 
       // Timeline spans 1 "unit" — positions below are fractions of total scroll.
       // Phase 1 (0 → 0.15): headline letters appear.
-      tl.to(
+      tl.fromTo(
         headlineLetters,
+        { opacity: 0, y: 40 },
         { opacity: 1, y: 0, duration: 0.15, stagger: { each: 0.004 } },
         0,
       );
@@ -175,10 +217,11 @@ export function Problem(): JSX.Element {
       tl.to(headlineRef.current, { opacity: 0, y: -40, duration: 0.1 }, 0.7);
 
       // Phase 3 (0.7 → 0.9): rising headline appears.
-      tl.to(risingRef.current, { opacity: 1, duration: 0.05 }, 0.7);
-      tl.to(
+      tl.fromTo(risingRef.current, { opacity: 0 }, { opacity: 1, duration: 0.05, immediateRender: true }, 0.7);
+      tl.fromTo(
         risingLetters,
-        { opacity: 1, y: 0, duration: 0.2, stagger: { each: 0.006 } },
+        { opacity: 0, y: 40 },
+        { opacity: 1, y: 0, duration: 0.2, stagger: { each: 0.006 }, immediateRender: true },
         0.7,
       );
 
@@ -193,6 +236,9 @@ export function Problem(): JSX.Element {
       // Phase 4 (0.95 → 1): rising headline fades, rays dim.
       tl.to(risingRef.current, { opacity: 0, duration: 0.05 }, 0.95);
       tl.to(raysRef.current, { opacity: 0, duration: 0.05 }, 0.95);
+
+      // Recalculate trigger positions after pin setup
+      ScrollTrigger.refresh();
     },
     { scope: sectionRef, dependencies: [words.length] },
   );
@@ -280,26 +326,28 @@ export function Problem(): JSX.Element {
         </h2>
       </div>
 
-      {/* Falling badges */}
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-0 z-20"
-      >
-        {words.map((word, i) => (
-          <div
-            key={word}
-            data-badge
-            style={{
-              left: `${positions[i].left}%`,
-              top: `${positions[i].top}%`,
-              transform: `rotate(${positions[i].rotation}deg)`,
-            }}
-            className="absolute inline-flex origin-center items-center whitespace-nowrap rounded-full border border-gold/40 bg-gold/10 px-4 py-2 font-inter text-xs font-medium text-gold backdrop-blur-sm md:px-6 md:py-3 md:text-lg"
-          >
-            {word}
-          </div>
-        ))}
-      </div>
+      {/* Falling badges — desktop only */}
+      {!isMobile && (
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-0 z-20"
+        >
+          {words.map((word, i) => (
+            <div
+              key={word}
+              data-badge
+              style={{
+                left: `${positions[i].left}%`,
+                top: `${positions[i].top}%`,
+                transform: `rotate(${positions[i].rotation}deg)`,
+              }}
+              className="absolute inline-flex origin-center items-center whitespace-nowrap rounded-full border border-gold/40 bg-gold/10 px-6 py-3 font-inter text-lg backdrop-blur-sm font-medium text-gold"
+            >
+              {word}
+            </div>
+          ))}
+        </div>
+      )}
     </section>
   );
 }
