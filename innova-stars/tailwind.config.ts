@@ -21,6 +21,7 @@ const config: Config = {
       fontFamily: {
         orbitron: ['var(--font-orbitron)', 'sans-serif'],
         inter: ['var(--font-inter)', 'sans-serif'],
+        bukra: ['var(--font-bukra)', 'sans-serif'],
       },
       letterSpacing: {
         widest: '0.3em',

@@ -49,15 +49,13 @@ export function CTA(): JSX.Element {
         ) ?? [];
 
       gsap.set(letters, { opacity: 0, y: 30 });
-      gsap.set(contentRef.current?.querySelectorAll('[data-reveal]') ?? [], {
-        opacity: 0,
-        y: 20,
-      });
+      const reveals = contentRef.current?.querySelectorAll('[data-reveal]') ?? [];
+      gsap.set(reveals, { opacity: 0, y: 20 });
 
       const intro = gsap.timeline({
         scrollTrigger: {
           trigger: section,
-          start: 'top 70%',
+          start: 'top 90%',
           once: true,
         },
       });

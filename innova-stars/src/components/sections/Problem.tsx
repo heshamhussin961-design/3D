@@ -103,6 +103,8 @@ export function Problem(): JSX.Element {
 
       if (prefersReducedMotion) return;
 
+      const mobile = window.innerWidth < 768;
+
       const headlineLetters =
         headlineRef.current?.querySelectorAll<HTMLSpanElement>(
           '[data-letter]',
@@ -111,6 +113,12 @@ export function Problem(): JSX.Element {
         risingRef.current?.querySelectorAll<HTMLSpanElement>('[data-letter]') ??
         [];
 
+      if (mobile) {
+        // Mobile: no animation, text visible by default
+        return;
+      }
+
+      // Desktop: pinned scroll-driven animation
       gsap.set(headlineLetters, { opacity: 0, y: 40 });
       gsap.set(risingLetters, { opacity: 0, y: 40 });
       gsap.set(risingRef.current, { opacity: 0 });
@@ -223,10 +231,11 @@ export function Problem(): JSX.Element {
         </g>
       </svg>
 
-      <div className="relative z-10 flex h-full items-center justify-center px-6">
+      <div className="relative z-10 flex min-h-[80vh] flex-col items-center justify-center gap-6 px-6 md:h-full md:min-h-0 md:flex-row md:gap-0">
         <h2
           ref={headlineRef}
-          className="max-w-5xl rounded-xl bg-black/40 px-8 py-4 text-center font-orbitron text-[40px] font-bold leading-[1.05] text-white backdrop-blur-sm md:px-12 md:py-6 md:text-[80px]"
+          className="max-w-5xl text-center font-bukra text-[20px] font-bold leading-[1.15] text-white sm:text-[40px] md:text-[80px]"
+          style={{ textShadow: '0 0 20px rgba(0,0,0,0.9), 0 0 40px rgba(0,0,0,0.7), 0 0 60px rgba(0,0,0,0.5)' }}
         >
           <span className="block">
             {headlineLine1.map((letter) => (
@@ -254,7 +263,7 @@ export function Problem(): JSX.Element {
 
         <h2
           ref={risingRef}
-          className="absolute left-1/2 top-1/2 max-w-4xl -translate-x-1/2 -translate-y-1/2 text-center font-orbitron text-[32px] font-semibold leading-tight md:text-[64px]"
+          className="text-center font-bukra text-[24px] font-semibold leading-tight sm:text-[32px] md:absolute md:left-1/2 md:top-1/2 md:max-w-4xl md:-translate-x-1/2 md:-translate-y-1/2 md:text-[64px]"
           style={{ textShadow: '0 0 40px rgba(212, 175, 55, 0.4)' }}
         >
           <span className="text-gradient-gold">
@@ -285,7 +294,7 @@ export function Problem(): JSX.Element {
               top: `${positions[i].top}%`,
               transform: `rotate(${positions[i].rotation}deg)`,
             }}
-            className="absolute inline-flex origin-center items-center whitespace-nowrap rounded-full border border-white/20 bg-white/5 px-6 py-3 font-inter text-sm font-medium text-white/70 backdrop-blur-sm md:text-lg"
+            className="absolute inline-flex origin-center items-center whitespace-nowrap rounded-full border border-gold/40 bg-gold/10 px-4 py-2 font-inter text-xs font-medium text-gold backdrop-blur-sm md:px-6 md:py-3 md:text-lg"
           >
             {word}
           </div>

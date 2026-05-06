@@ -115,7 +115,7 @@ export function Hero(): JSX.Element {
     >
       <div
         ref={contentRef}
-        className="relative z-10 flex h-full flex-col items-center justify-center px-6 text-center will-change-[transform,opacity,filter]"
+        className="relative z-10 flex min-h-[80vh] flex-col items-center justify-center px-6 text-center will-change-[transform,opacity,filter] md:h-full md:min-h-0"
       >
         <div
           ref={logoRef}
@@ -134,8 +134,8 @@ export function Hero(): JSX.Element {
 
           <h1
             ref={taglineRef}
-            className="mt-6 rounded-xl bg-black/40 px-8 py-4 font-orbitron text-[26px] font-bold leading-[1.05] tracking-[0.08em] text-white backdrop-blur-sm sm:text-[32px] sm:tracking-[0.1em] md:mt-10 md:px-12 md:py-6 md:text-[72px]"
-            style={{ textShadow: '0 0 30px rgba(212, 175, 55, 0.25)' }}
+            className="mt-6 font-bukra text-[22px] font-bold leading-[1.05] tracking-[0.08em] text-white sm:text-[32px] sm:tracking-[0.1em] md:mt-10 md:text-[72px]"
+            style={{ textShadow: '0 0 20px rgba(0,0,0,0.9), 0 0 40px rgba(0,0,0,0.7), 0 0 60px rgba(0,0,0,0.5), 0 0 30px rgba(212,175,55,0.25)' }}
           >
             <span className="block">
               {tagline1.map((letter) => (

@@ -30,13 +30,15 @@ export function Stats(): JSX.Element {
     () => {
       const header = headerRef.current;
       if (header) {
-        gsap.from(header.querySelectorAll('[data-reveal]'), {
+        const reveals = header.querySelectorAll('[data-reveal]');
+        gsap.set(reveals, { opacity: 1, y: 0 });
+        gsap.from(reveals, {
           opacity: 0,
           y: 24,
           duration: 0.8,
           ease: 'power2.out',
           stagger: 0.1,
-          scrollTrigger: { trigger: header, start: 'top 80%', once: true },
+          scrollTrigger: { trigger: header, start: 'top 90%', once: true },
         });
       }
 

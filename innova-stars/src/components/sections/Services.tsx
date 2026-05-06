@@ -47,7 +47,9 @@ export function Services(): JSX.Element {
     () => {
       const header = headerRef.current;
       if (header) {
-        gsap.from(header.querySelectorAll('[data-reveal]'), {
+        const reveals = header.querySelectorAll('[data-reveal]');
+        gsap.set(reveals, { opacity: 1, y: 0 });
+        gsap.from(reveals, {
           opacity: 0,
           y: 30,
           duration: 0.8,
@@ -55,7 +57,7 @@ export function Services(): JSX.Element {
           stagger: 0.1,
           scrollTrigger: {
             trigger: header,
-            start: 'top 80%',
+            start: 'top 90%',
             once: true,
           },
         });
@@ -108,7 +110,7 @@ export function Services(): JSX.Element {
         </div>
         <h2
           data-reveal
-          className="mt-4 font-orbitron text-4xl font-bold text-white md:text-[56px]"
+          className="mt-4 font-bukra text-4xl font-bold text-white md:text-[56px]"
         >
           Our Services
         </h2>

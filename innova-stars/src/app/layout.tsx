@@ -1,6 +1,7 @@
 import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import type { Metadata, Viewport } from 'next';
+import localFont from 'next/font/local';
 import { Inter, Orbitron } from 'next/font/google';
 import { Suspense, type ReactNode } from 'react';
 
@@ -30,6 +31,12 @@ const inter = Inter({
   subsets: ['latin'],
   weight: ['400', '500', '600'],
   variable: '--font-inter',
+  display: 'swap',
+});
+
+const bukra = localFont({
+  src: '../fonts/29LTBukra-BoldItalic.ttf',
+  variable: '--font-bukra',
   display: 'swap',
 });
 
@@ -93,7 +100,7 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: ReactNode }>): JSX.Element {
   return (
-    <html lang="en" className={`${orbitron.variable} ${inter.variable}`}>
+    <html lang="en" className={`${orbitron.variable} ${inter.variable} ${bukra.variable}`}>
       <head>
         {/* Preload the first frame of the rocket sequence so the hero
             paints fast while the rest of the frames stream in. */}

@@ -9,7 +9,8 @@ if (typeof window !== 'undefined') {
   gsap.registerPlugin(ScrollTrigger);
 }
 
-const HEADLINE = 'Ignition Sequence Engaged';
+const HEADLINE_LINE_1 = 'Ignition Sequence';
+const HEADLINE_LINE_2 = 'Engaged';
 const SUBLINE = 'Strap in. The next frontier of marketing is taking off.';
 
 function splitLetters(text: string): { char: string; key: string }[] {
@@ -74,7 +75,8 @@ export function RocketLaunch(): JSX.Element {
     { scope: sectionRef },
   );
 
-  const letters = splitLetters(HEADLINE);
+  const line1 = splitLetters(HEADLINE_LINE_1);
+  const line2 = splitLetters(HEADLINE_LINE_2);
 
   return (
     <section
@@ -96,22 +98,35 @@ export function RocketLaunch(): JSX.Element {
       <div className="relative z-20 mx-auto max-w-5xl px-6 text-center">
         <h2
           ref={headlineRef}
-          className="rounded-xl bg-black/40 px-8 py-4 font-orbitron text-[36px] font-black leading-[1.05] tracking-[0.02em] text-white backdrop-blur-sm sm:text-[48px] md:px-12 md:py-6 md:text-[88px]"
+          className="font-bukra text-[20px] font-black leading-[1.15] tracking-[0.02em] text-white sm:text-[48px] md:text-[88px]"
           style={{
             textShadow:
-              '0 0 30px rgba(0,0,0,0.6), 0 0 60px rgba(212,175,55,0.25)',
+              '0 0 20px rgba(0,0,0,0.9), 0 0 40px rgba(0,0,0,0.7), 0 0 60px rgba(0,0,0,0.5), 0 0 60px rgba(212,175,55,0.25)',
             perspective: '600px',
           }}
         >
-          {letters.map((letter) => (
-            <span
-              key={letter.key}
-              data-letter
-              className="inline-block whitespace-pre will-change-transform"
-            >
-              {letter.char}
-            </span>
-          ))}
+          <span className="block">
+            {line1.map((letter) => (
+              <span
+                key={letter.key}
+                data-letter
+                className="inline-block whitespace-pre will-change-transform"
+              >
+                {letter.char}
+              </span>
+            ))}
+          </span>
+          <span className="block">
+            {line2.map((letter) => (
+              <span
+                key={letter.key}
+                data-letter
+                className="inline-block whitespace-pre will-change-transform"
+              >
+                {letter.char}
+              </span>
+            ))}
+          </span>
         </h2>
 
         <p
