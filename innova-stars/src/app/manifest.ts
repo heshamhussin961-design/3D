@@ -16,8 +16,8 @@ export default function manifest(): MetadataRoute.Manifest {
     background_color: '#0A0A1A',
     theme_color: '#D4AF37',
     icons: [
-      { src: '/favicon.svg', sizes: 'any', type: 'image/svg+xml' },
-      { src: '/innova-logo.svg', sizes: '512x512', type: 'image/svg+xml' },
+      { src: '/icon.webp', sizes: 'any', type: 'image/webp' },
+      { src: '/logo.webp', sizes: '512x512', type: 'image/webp' },
     ],
     categories: ['business', 'design', 'productivity'],
   };

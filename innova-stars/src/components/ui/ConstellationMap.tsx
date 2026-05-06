@@ -247,11 +247,12 @@ export function ConstellationMap(): JSX.Element {
         const Icon = ICON_MAP[service.icon];
         const faded = activeId !== null && activeId !== service.id;
         const hub = service.isHub === true;
+        const href = hub ? '/about' : `/services/${service.id}`;
         return (
-          <button
+          <a
             key={service.id}
             data-node
-            type="button"
+            href={href}
             aria-label={service.name}
             aria-describedby={`${service.id}-label`}
             className={cn(
@@ -290,7 +291,7 @@ export function ConstellationMap(): JSX.Element {
             >
               <Icon className={hub ? 'h-7 w-7' : 'h-4 w-4'} strokeWidth={2.2} />
             </span>
-          </button>
+          </a>
         );
       })}
 
@@ -320,13 +321,20 @@ export function ConstellationMap(): JSX.Element {
 
       {tooltip ? (
         <div
-          className="pointer-events-none absolute z-20 -translate-y-1/2 animate-in"
+          className="absolute z-20 -translate-y-1/2 animate-in"
           style={{ top: tooltip.top, left: tooltip.left }}
+          onMouseEnter={() => setActiveId(tooltip.service.id)}
+          onMouseLeave={handleLeave}
         >
-          <ServiceCard
-            service={SERVICES_BY_ID[tooltip.service.id]}
-            variant="tooltip"
-          />
+          <a
+            href={`/services/${tooltip.service.id}`}
+            className="block cursor-pointer"
+          >
+            <ServiceCard
+              service={SERVICES_BY_ID[tooltip.service.id]}
+              variant="tooltip"
+            />
+          </a>
         </div>
       ) : null}
     </div>

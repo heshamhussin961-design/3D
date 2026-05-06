@@ -80,7 +80,7 @@ export function RocketLaunch(): JSX.Element {
     <section
       ref={sectionRef}
       aria-label="Mission ignition"
-      className="relative flex h-screen w-full items-center justify-center overflow-hidden"
+      className="relative flex min-h-[50vh] w-full items-center justify-center overflow-hidden py-16 md:min-h-[60vh] md:py-20"
     >
       {/* HUD ticker */}
       <div
@@ -96,7 +96,7 @@ export function RocketLaunch(): JSX.Element {
       <div className="relative z-20 mx-auto max-w-5xl px-6 text-center">
         <h2
           ref={headlineRef}
-          className="font-orbitron text-[36px] font-black leading-[1.05] tracking-[0.02em] text-white sm:text-[48px] md:text-[88px]"
+          className="rounded-xl bg-black/40 px-8 py-4 font-orbitron text-[36px] font-black leading-[1.05] tracking-[0.02em] text-white backdrop-blur-sm sm:text-[48px] md:px-12 md:py-6 md:text-[88px]"
           style={{
             textShadow:
               '0 0 30px rgba(0,0,0,0.6), 0 0 60px rgba(212,175,55,0.25)',

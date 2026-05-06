@@ -7,7 +7,7 @@ import { useRef } from 'react';
 
 import { AnimatedCounter } from '@/components/ui/AnimatedCounter';
 import { ParticleField } from '@/components/ui/ParticleField';
-import { SectionNumber } from '@/components/ui/SectionNumber';
+
 import { STATS } from '@/lib/constants';
 
 if (typeof window !== 'undefined') {
@@ -78,11 +78,11 @@ export function Stats(): JSX.Element {
         className="relative z-10 mx-auto max-w-2xl text-center"
       >
         <div data-reveal className="flex items-center justify-center gap-3">
-          <SectionNumber number="04" />
-          <span aria-hidden="true" className="h-px w-8 bg-gold/30" />
+          <span aria-hidden="true" className="h-px flex-1 bg-gold/30" />
           <p className="font-orbitron text-xs font-semibold tracking-[0.3em] text-gold">
             BY THE NUMBERS
           </p>
+          <span aria-hidden="true" className="h-px flex-1 bg-gold/30" />
         </div>
         <h2
           data-reveal

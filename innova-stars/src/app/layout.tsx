@@ -75,11 +75,10 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: [
-      { url: '/favicon.svg', type: 'image/svg+xml' },
-      { url: '/innova-logo.svg', type: 'image/svg+xml', sizes: 'any' },
+      { url: '/icon.webp', type: 'image/webp' },
     ],
-    shortcut: '/favicon.svg',
-    apple: '/favicon.svg',
+    shortcut: '/icon.webp',
+    apple: '/icon.webp',
   },
 };
 

@@ -10,19 +10,24 @@ if (typeof window !== 'undefined') {
 }
 
 const OLD_MARKETING_DESKTOP = [
-  'Print Ads',
-  'Cold Calls',
-  'Billboards',
-  'Mass Email',
-  'Flyers',
-  'TV Spots',
+  'AI Solutions',
+  'Brand Identity',
+  'Social Media',
+  'SEO Growth',
+  'Influencer Mgmt',
+  'Smart Apps',
+  'Web Development',
+  'Mobile App Development',
+  'Brand Strategy',
 ];
 
 const OLD_MARKETING_MOBILE = [
-  'Print Ads',
-  'Cold Calls',
-  'Billboards',
-  'Mass Email',
+  'AI Solutions',
+  'Brand Identity',
+  'Social Media',
+  'SEO Growth',
+  'Smart Apps',
+  'Brand Strategy',
 ];
 
 const HEADLINE_LINE_1 = 'Traditional marketing';
@@ -192,7 +197,7 @@ export function Problem(): JSX.Element {
     <section
       ref={sectionRef}
       aria-label="Why traditional marketing no longer works"
-      className="relative h-screen w-full overflow-hidden"
+      className="relative min-h-[80vh] w-full overflow-hidden md:h-screen"
     >
       {/* Gold light rays */}
       <svg
@@ -221,7 +226,7 @@ export function Problem(): JSX.Element {
       <div className="relative z-10 flex h-full items-center justify-center px-6">
         <h2
           ref={headlineRef}
-          className="max-w-5xl text-center font-orbitron text-[40px] font-bold leading-[1.05] text-white md:text-[80px]"
+          className="max-w-5xl rounded-xl bg-black/40 px-8 py-4 text-center font-orbitron text-[40px] font-bold leading-[1.05] text-white backdrop-blur-sm md:px-12 md:py-6 md:text-[80px]"
         >
           <span className="block">
             {headlineLine1.map((letter) => (

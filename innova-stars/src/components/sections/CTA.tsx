@@ -8,7 +8,7 @@ import dynamic from 'next/dynamic';
 import { useRef, useState } from 'react';
 
 import { MagneticButton } from '@/components/ui/MagneticButton';
-import { SectionNumber } from '@/components/ui/SectionNumber';
+
 
 if (typeof window !== 'undefined') {
   gsap.registerPlugin(ScrollTrigger);
@@ -92,7 +92,7 @@ export function CTA(): JSX.Element {
       ref={sectionRef}
       id="contact"
       aria-label="Start your project"
-      className="relative min-h-screen w-full overflow-hidden"
+      className="relative min-h-[70vh] w-full overflow-hidden md:min-h-screen"
       style={{
         backgroundImage:
           'radial-gradient(ellipse at center 80%, rgba(212,175,55,0.18) 0%, rgba(0,0,0,0.45) 55%, rgba(0,0,0,0.7) 100%)',
@@ -100,14 +100,14 @@ export function CTA(): JSX.Element {
     >
       <div
         ref={contentRef}
-        className="relative z-10 mx-auto flex min-h-screen max-w-4xl flex-col items-center justify-center px-6 py-24 text-center md:py-32"
+        className="relative z-10 mx-auto flex min-h-[70vh] max-w-4xl flex-col items-center justify-center px-6 py-16 text-center md:min-h-screen md:py-32"
       >
         <div data-reveal className="flex items-center justify-center gap-3">
-          <SectionNumber number="05" />
-          <span aria-hidden="true" className="h-px w-8 bg-gold/30" />
+          <span aria-hidden="true" className="h-px flex-1 bg-gold/30" />
           <p className="font-orbitron text-xs font-semibold tracking-[0.3em] text-gold">
             YOUR JOURNEY STARTS HERE
           </p>
+          <span aria-hidden="true" className="h-px flex-1 bg-gold/30" />
         </div>
 
         <h2
@@ -160,12 +160,6 @@ export function CTA(): JSX.Element {
           </MagneticButton>
         </div>
 
-        <p
-          data-reveal
-          className="mt-8 font-inter text-xs tracking-wider text-white/40"
-        >
-          Or scroll to explore more
-        </p>
       </div>
 
       <ContactModal open={modalOpen} onClose={() => setModalOpen(false)} />

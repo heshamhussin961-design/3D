@@ -62,7 +62,7 @@ export function ServiceCard({
       className={cn(
         'flex flex-col gap-3 border border-gold/30 bg-deep-space/95 p-5 backdrop-blur-md',
         isTooltip
-          ? 'pointer-events-none w-[280px] shadow-[0_0_40px_rgba(212,175,55,0.15)]'
+          ? 'w-[280px] shadow-[0_0_40px_rgba(212,175,55,0.15)] transition-colors duration-300 hover:border-gold/60 hover:bg-deep-space'
           : 'group relative h-full w-full transition-colors duration-300 hover:border-gold/60 hover:bg-deep-space',
         className,
       )}
@@ -90,7 +90,7 @@ export function ServiceCard({
           aria-hidden="true"
           className="mt-1 font-orbitron text-[10px] uppercase tracking-[0.2em] text-gold/80"
         >
-          Learn more →
+          Click the icon to explore →
         </span>
       )}
     </article>

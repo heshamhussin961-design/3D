@@ -1,6 +1,6 @@
 'use client';
 
-import { Mail, MapPin, Phone } from 'lucide-react';
+import { ExternalLink, Mail, MapPin, Phone } from 'lucide-react';
 
 import { Logo } from '@/components/ui/Logo';
 import { NewsletterForm } from '@/components/ui/NewsletterForm';
@@ -108,6 +108,27 @@ export function Footer(): JSX.Element {
               {SITE_CONFIG.address}
             </li>
           </ul>
+
+          {/* Google Map */}
+          <div className="mt-2 overflow-hidden rounded-lg border border-gold/20">
+            <iframe
+              title="Innova Stars location"
+              src="https://maps.google.com/maps?q=Innova+Stars+for+Marketing+Technology+Abu+Dhabi&z=15&ie=UTF8&iwloc=B&output=embed"
+              className="h-[180px] w-full grayscale-[30%]"
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              allowFullScreen
+            />
+          </div>
+          <a
+            href="https://www.google.com/maps/place/Innova+Stars+for+Marketing+Technology+%D8%A7%D9%8A%D9%86%D9%88%D9%81%D8%A7+%D8%B3%D8%AA%D8%A7%D8%B1%D8%B2+%D9%84%D8%AA%D9%83%D9%86%D9%88%D9%84%D9%88%D8%AC%D9%8A%D8%A7+%D8%A7%D9%84%D8%AA%D8%B3%D9%88%D9%8A%D9%82%E2%80%AD/@24.490964,54.3637322,17z/data=!3m1!4b1!4m6!3m5!1s0x3e5e670070b4d377:0x51620c87d83e7175!8m2!3d24.490964!4d54.3637322!16s%2Fg%2F11vskknz15"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 font-orbitron text-xs font-semibold uppercase tracking-[0.15em] text-gold transition-colors duration-200 hover:text-gold-light"
+          >
+            <ExternalLink className="h-3.5 w-3.5" />
+            Get Directions
+          </a>
         </div>
       </div>
 

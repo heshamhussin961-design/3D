@@ -111,7 +111,7 @@ export function Hero(): JSX.Element {
       ref={sectionRef}
       id="home"
       aria-label="Innova Stars hero"
-      className="relative h-screen w-full overflow-hidden"
+      className="relative min-h-[80vh] w-full overflow-hidden md:h-screen"
     >
       <div
         ref={contentRef}
@@ -123,7 +123,7 @@ export function Hero(): JSX.Element {
         >
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src="/logo.png"
+            src="/logo.webp"
             alt="Innova Stars"
             className="h-32 w-auto md:h-48 lg:h-56"
             style={{
@@ -134,7 +134,7 @@ export function Hero(): JSX.Element {
 
           <h1
             ref={taglineRef}
-            className="mt-6 font-orbitron text-[26px] font-bold leading-[1.05] tracking-[0.08em] text-white sm:text-[32px] sm:tracking-[0.1em] md:mt-10 md:text-[72px]"
+            className="mt-6 rounded-xl bg-black/40 px-8 py-4 font-orbitron text-[26px] font-bold leading-[1.05] tracking-[0.08em] text-white backdrop-blur-sm sm:text-[32px] sm:tracking-[0.1em] md:mt-10 md:px-12 md:py-6 md:text-[72px]"
             style={{ textShadow: '0 0 30px rgba(212, 175, 55, 0.25)' }}
           >
             <span className="block">

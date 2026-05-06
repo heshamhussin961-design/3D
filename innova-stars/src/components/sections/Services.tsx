@@ -7,7 +7,7 @@ import Link from 'next/link';
 import { useEffect, useRef, useState } from 'react';
 
 import { ConstellationMap } from '@/components/ui/ConstellationMap';
-import { SectionNumber } from '@/components/ui/SectionNumber';
+
 import { ServiceCard } from '@/components/ui/ServiceCard';
 import { SERVICES } from '@/lib/constants/services';
 
@@ -100,11 +100,11 @@ export function Services(): JSX.Element {
 
       <div ref={headerRef} className="mx-auto max-w-2xl text-center">
         <div data-reveal className="flex items-center justify-center gap-3">
-          <SectionNumber number="02" />
-          <span aria-hidden="true" className="h-px w-8 bg-gold/30" />
+          <span aria-hidden="true" className="h-px flex-1 bg-gold/30" />
           <p className="font-orbitron text-xs font-semibold tracking-[0.3em] text-gold">
             OUR SERVICES
           </p>
+          <span aria-hidden="true" className="h-px flex-1 bg-gold/30" />
         </div>
         <h2
           data-reveal

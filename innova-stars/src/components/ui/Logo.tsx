@@ -35,7 +35,7 @@ export function Logo({ className }: LogoProps): JSX.Element {
     >
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
-        src="/logo.png"
+        src="/logo.webp"
         alt="Innova Stars"
         className="h-12 w-auto transition-transform duration-300 group-hover:scale-110 md:h-14"
       />

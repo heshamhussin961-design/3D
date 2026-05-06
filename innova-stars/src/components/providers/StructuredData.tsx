@@ -16,8 +16,8 @@ export function StructuredData(): JSX.Element {
     description: SITE_CONFIG.description,
     email: SITE_CONFIG.email,
     telephone: SITE_CONFIG.phone,
-    image: `${SITE_CONFIG.url}/innova-logo.svg`,
-    logo: `${SITE_CONFIG.url}/favicon.svg`,
+    image: `${SITE_CONFIG.url}/logo.webp`,
+    logo: `${SITE_CONFIG.url}/icon.webp`,
     address: {
       '@type': 'PostalAddress',
       addressLocality: 'Abu Dhabi',
